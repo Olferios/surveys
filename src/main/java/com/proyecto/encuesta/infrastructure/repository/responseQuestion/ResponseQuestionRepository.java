@@ -1,9 +1,7 @@
 package com.proyecto.encuesta.infrastructure.repository.responseQuestion;
 
+import com.proyecto.encuesta.domain.entities.ResponseQuestion;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.proyecto.encuesta.domain.enties.CategoryCatalog;
-
-public interface ResponseQuestionRepository extends JpaRepository<CategoryCatalog,Long> {
-
+public interface ResponseQuestionRepository extends JpaRepository<ResponseQuestion, Long> {
 }

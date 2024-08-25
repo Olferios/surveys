@@ -7,8 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.proyecto.encuesta.aplication.service.categoriesCatalog.ICategoryCatalog;
-import com.proyecto.encuesta.domain.enties.Audit;
-import com.proyecto.encuesta.domain.enties.CategoryCatalog;;
+import com.proyecto.encuesta.domain.entities.Audit;
+import com.proyecto.encuesta.domain.entities.CategoryCatalog;
+
 @Service
 public class CategoryCatalogAdapter implements ICategoryCatalog {
 
@@ -51,4 +52,6 @@ public class CategoryCatalogAdapter implements ICategoryCatalog {
     public void deleteById(Long id) {
         categoryCatalogRepository.deleteById(id);
     }
+
+
 }
