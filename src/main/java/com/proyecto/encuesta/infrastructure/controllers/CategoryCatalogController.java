@@ -38,14 +38,14 @@ public class CategoryCatalogController
 
   @PostMapping
     public ResponseEntity<CategoryCatalog> crearCategory(@RequestBody CategoryCatalog categoryCatalog) {
-        // Lógica para guardar el usuario
+  
         CategoryCatalog categoryUser = ICategoryCatalog.save(categoryCatalog);
         return new ResponseEntity<>(categoryCatalog, HttpStatus.CREATED);
     }
     @PutMapping("/{id}")
     
     public ResponseEntity<CategoryCatalog> actualizarCategory(@PathVariable Long id, @RequestBody CategoryCatalog categoryCatalog) {
-        // Lógica para actualizar el usuario
+       
         CategoryCatalog categoryUser = ICategoryCatalog.update(id, categoryCatalog);
         return new ResponseEntity<>(categoryUser, HttpStatus.OK)  ;
     };
