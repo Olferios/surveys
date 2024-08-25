@@ -1,4 +1,5 @@
 package com.proyecto.encuesta.domain.enties;
+import java.io.Serializable;
 
 import jakarta.persistence.Embeddable;
 

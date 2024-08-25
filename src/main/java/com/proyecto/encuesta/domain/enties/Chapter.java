@@ -18,7 +18,7 @@ public class Chapter {
     private long Id;
     @ManyToOne
     @JoinColumn(name = "survey_id")
-    private Survey id;
+    private Survey survey;
     @Embedded
     Audit audit = new Audit();
 
@@ -27,6 +27,49 @@ public class Chapter {
 
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     private String chapter_title;
+
+    public Chapter() {
+    }
+
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
+
+    public Survey getSurvey() {
+        return survey;
+    }
+
+    public void setSurvey(Survey survey) {
+        this.survey = survey;
+    }
+
+    public Audit getAudit() {
+        return audit;
+    }
+
+    public void setAudit(Audit audit) {
+        this.audit = audit;
+    }
+
+    public String getChapter_number() {
+        return chapter_number;
+    }
+
+    public void setChapter_number(String chapter_number) {
+        this.chapter_number = chapter_number;
+    }
+
+    public String getChapter_title() {
+        return chapter_title;
+    }
+
+    public void setChapter_title(String chapter_title) {
+        this.chapter_title = chapter_title;
+    }
 
 
 }

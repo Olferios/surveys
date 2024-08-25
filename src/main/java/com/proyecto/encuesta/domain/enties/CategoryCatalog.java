@@ -9,13 +9,44 @@ import jakarta.persistence.Id;
 
 @Entity
 public class CategoryCatalog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private Long id;
 
     @Embedded
-    Audit audit = new Audit();
+    private Audit audit = new Audit();
 
     @Column(columnDefinition = "VARCHAR(255)", nullable = false)
     private String name;
+
+    // Constructor
+    public CategoryCatalog() {
+    }
+
+    // Getters y Setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Audit getAudit() {
+        return audit;
+    }
+
+    public void setAudit(Audit audit) {
+        this.audit = audit;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
