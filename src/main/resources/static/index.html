@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Creación De Encuesta</h1>
+        <form id="nuevaEncuesta">
+            <label for="name">Nombre de encuesta:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="description">Descripción de la encuesta:</label>
+            <input type="text" id="description" name="description" required>
+            <input type="submit" value="Registrar">
+        </form>
+
+        <h1>Ver Todas Las Encuestas</h1>
+        <button id="viewAllBtn">Ver Todos</button>
+        <div id="allUsers"></div>
+    </div>
+    <div>
+        <h1>Editar Encuestas</h1>
+        <button onclick="cargarSurveysSelect()">Cargar encuestas</button>
+        <form id="editarEncuesta">
+            <select name="todasLasEncuestas" id="todasLasEncuestas">
+                <option value="">Seleccione una encuesta</option>
+            </select>
+            <label for="name">Nombre de encuesta:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="description">Descripción de la encuesta:</label>
+            <input type="text" id="description" name="description" required>
+            <input type="submit" value="Editar encuesta">
+        </form>
+    </div>
+    <div>
+        <h1>Eliminar Encuestas</h1>
+        <button onclick="cargarSurveysSelectDel()">Cargar encuestas</button>
+        <select name="todasLasEncuestasd" id="todasLasEncuestasd">
+            <option value="">Seleccione una encuesta</option>
+        </select>      
+        <button id="eliminarEncuesta">Eliminar encuestas</button>
+        <button onclick="window.modal.showModal();">Abrir ventana modal</button>
+        <dialog id="modal">
+            <h2>Este es el título de mi ventana modal</h2>
+            <p>Este es un texto de ejemplo dentro de una ventana modal</p>
+            <button onclick="window.modal.close();">Cerrar</button>
+        </dialog>
+    </div>
+<h1>Capitulos</h1>
+    <div>
+        <h1>Crear Capitulos</h1>
+        <button onclick="cargarSurveysSelectCap()">Cargar encuestas</button>
+        <form id="agregarCapitulo">
+            <select name="survey" id="todasLasEncuestasCap">
+                <option value="">Seleccione una encuesta</option>
+            </select>   
+            <label for="capitulo">numero capitulo:</label>
+            <input type="text" id="chapter_number" name="chapter_number" required>
+            <label for="capitulo">titulo capitulo:</label>
+            <input type="text" id="chapter_title" name="chapter_title" required>
+            <input type="submit" value="crear capitulo">
+        </form>
+        <button onclick="window.modal.showModal();">Abrir ventana modal</button>
+        <dialog id="modal">
+            <h2>Este es el título de mi ventana modal</h2>
+            <p>Este es un texto de ejemplo dentro de una ventana modal</p>
+            <button onclick="window.modal.close();">Cerrar</button>
+        </dialog>
+    </div>
+
+    <div>
+        <h1>Editar capitulo</h1>
+        <button onclick="cargarCapituloEditar()">Cargar capitulo</button>
+        <form id="editarCapitulo">
+            <select name="TodosCapitulos" id="TodosCapitulos">
+                <option value="">Seleccione una capitulo</option>
+            </select>
+            <label for="capitulo">numero capitulo:</label>
+            <input type="text" id="chapter_number" name="chapter_number" required>
+            <label for="capitulo">titulo capitulo:</label>
+            <input type="text" id="chapter_title" name="chapter_title" required>
+            <input type="submit" value="editar capitulo">
+        </form>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
