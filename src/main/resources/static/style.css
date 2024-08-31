@@ -119,3 +119,19 @@ main {
     font-size: 16px;
     color: #333;
 }
+
+
+/* Estilos a editar en la tabla  */
+.bi-pencil-fill, .bi-trash3-fill, .bi-plus-square-fill, .bi-receipt {
+    color: #007bff; /* Color por defecto */
+    transition: color 0.3s ease-in-out;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.bi-pencil-fill:hover, .bi-trash3-fill:hover, .bi-plus-square-fill:hover, .bi-receipt:hover {
+    color: #0056b3; /* Color al hacer hover */
+    text-decoration: underline; /* Subrayado al hacer hover (opcional) */
+}
+
+

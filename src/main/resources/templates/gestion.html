@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta JOANOLF</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Enlace a FontAwesome -->
+  <!-- css bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet"
+    crossorigin="anonymous">
+
+</head>
+
+<body>
+  <header>
+    <h1>Encuestas.com</h1>
+  </header>
+
+  <nav>
+    <a href="#">Inicio</a>
+    <a href="#">Encuestas</a>
+    <a href="#">Chapters</a>
+    <a href="#">Preguntas</a>
+    <a href="#">Respuestas</a>
+
+  </nav>
+
+  <main>
+    
+
+
+    <!-- #################
+       ESTES ES EL OTRO EJEMPLO
+       #########################
+        -->
+        <p>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" data-bs-hide=".collapse.show">
+            Gestión Encuesta
+          </button>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2" data-bs-hide=".collapse.show">
+            Gestión Capitulos
+          </button>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3" data-bs-hide=".collapse.show">
+            Gestión Preguntas
+          </button>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample5" data-bs-hide=".collapse.show">
+            Gestión SubPreguntas
+          </button>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4" data-bs-hide=".collapse.show">
+            Gestión Opción Respuestas
+          </button>
+        </p>
+
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body"id="todasEncuestas">
+       
+        <!-- <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id encuesta</th>
+              <th scope="col">Nombre Encuesta</th>              
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>
+                <i class="bi bi-pencil-fill" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"></i>
+                <i class="bi bi-trash3-fill" title="Eliminar" style="cursor: pointer;"></i>
+                <i class="bi bi-plus-square-fill" title="Agregar capitulo" data-bs-toggle="modal" data-bs-target="#exampleModal2"style="cursor: pointer;"></i>
+
+              </td>
+              
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              
+            </tr>
+          </tbody>
+        </table> -->
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample2">
+      <div class="card card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id encuesta</th>
+              <th scope="col">Nombre Encuesta</th>
+              <th scope="col">Capitulo</th>              
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <!-- *************
+                 DROPDOWN DE CAPITULO
+                 *¨************************* -->
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Capitulo
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                    <li><a class="dropdown-item" href="#">Capitulo 1</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 2</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              <td>
+                <i class="bi bi-pencil-fill" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="cursor: pointer;"></i>
+                <i class="bi bi-trash3-fill" title="Eliminar" style="cursor: pointer;"></i>
+                <i class="bi bi-plus-square-fill" title="Agregar Pregunta" data-bs-toggle="modal" data-bs-target="#exampleModal4" style="cursor: pointer;"></i>
+
+              </td>
+              
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample3">
+      <div class="card card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id encuesta</th>
+              <th scope="col">Nombre Encuesta</th>
+              <th scope="col">Capitulo</th>
+              <th scope="col">Preguntas</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>
+                <!-- *************
+                 DROPDOWN DE CAPITULO
+                 *¨************************* -->
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside"
+                    data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Capitulo
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                    <li><a class="dropdown-item" href="#">Capitulo 1</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 2</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              <!-- *************
+                 DROPDOWN DE PRegunta
+                 *¨************************* -->
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside"
+                    data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Pregunta
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                    <li><a class="dropdown-item" href="#">Pregunta 1</a></li>
+                    <li><a class="dropdown-item" href="#">Pregunta 2</a></li>
+                    <li><a class="dropdown-item" href="#">Pregunta 3</a></li>
+                  </ul>
+                </div>
+              </td>
+
+              <td>
+                <i class="bi bi-pencil-fill" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal5"
+                  style="cursor: pointer;"></i>
+                <i class="bi bi-trash3-fill" title="Eliminar" style="cursor: pointer;"></i>
+                <i class="bi bi-plus-square-fill" title="Agregar Respuesta" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal6" style="cursor: pointer;"></i>
+
+              </td>
+
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample4">
+      <div class="card card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id encuesta</th>
+              <th scope="col">Nombre Encuesta</th>
+              <th scope="col">Capitulo</th>
+              <th scope="col">Preguntas</th>
+              <th scope="col">Respuestas</th>              
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>
+                <!-- *************
+                 DROPDOWN DE CAPITULO
+                 *¨************************* -->
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Capitulo
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                    <li><a class="dropdown-item" href="#">Capitulo 1</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 2</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              <!-- *************
+                 DROPDOWN DE Pregunta
+                 *¨************************* -->
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Pregunta
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                    <li><a class="dropdown-item" href="#">Pregunta 1</a></li>
+                    <li><a class="dropdown-item" href="#">Pregunta 2</a></li>
+                    <li><a class="dropdown-item" href="#">Pregunta 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              <!-- *************
+                 DROPDOWN DE seleccion de Respuesta
+                 *¨************************* -->
+              
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Respuesta
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                    <li><a class="dropdown-item" href="#">Respuesta 1</a></li>
+                    <li><a class="dropdown-item" href="#">Respuesta 2</a></li>
+                    <li><a class="dropdown-item" href="#">Respuesta 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              
+              <td>
+                <i class="bi bi-pencil-fill" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal8" style="cursor: pointer;"></i>
+                <i class="bi bi-trash3-fill" title="Eliminar" style="cursor: pointer;"></i>
+                <i class="bi bi-plus-square-fill" title="Agregar Opción Respuesta" data-bs-toggle="modal" data-bs-target="#exampleModal9" style="cursor: pointer;"></i>
+
+              </td>
+              
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample5">
+      <div class="card card-body">
+        <h1>Hola</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id encuesta</th>
+              <th scope="col">Nombre Encuesta</th>
+              <th scope="col">Capitulo</th>
+              <th scope="col">Preguntas</th>
+              <th scope="col">SubPreguntas</th>
+                            
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>
+                <!-- *************
+                 DROPDOWN DE CAPITULO
+                 *¨************************* -->
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Capitulo
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                    <li><a class="dropdown-item" href="#">Capitulo 1</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 2</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              <!-- *************
+                 DROPDOWN DE Pregunta
+                 *¨************************* -->
+              <td>
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Pregunta
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                    <li><a class="dropdown-item" href="#">Pregunta 1</a></li>
+                    <li><a class="dropdown-item" href="#">Pregunta 2</a></li>
+                    <li><a class="dropdown-item" href="#">Pregunta 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              <!-- *************
+                 DROPDOWN DE SubPregunta
+                 *¨************************* -->
+                 <td>
+                  <div class="btn-group">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                      Seleccione Pregunta
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                      <li><a class="dropdown-item" href="#">SubPregunta 1</a></li>
+                      <li><a class="dropdown-item" href="#">SubPregunta 2</a></li>
+                      <li><a class="dropdown-item" href="#">SubPregunta 3</a></li>
+                    </ul>
+                  </div>
+                </td>
+              <!-- *************
+                 DROPDOWN DE Acciones
+                 *¨************************* -->
+              
+              
+              <td>
+                <i class="bi bi-pencil-fill" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"></i>
+                <i class="bi bi-trash3-fill" title="Eliminar" style="cursor: pointer;"></i>
+                <i class="bi bi-receipt" title="Agregar SubPregunta" data-bs-toggle="modal" data-bs-target="#exampleModal7" style="cursor: pointer;"></i>
+                <i class="bi bi-plus-square-fill" title="Agregar Opción Respuesta" data-bs-toggle="modal" data-bs-target="#exampleModal6" style="cursor: pointer;"></i>
+
+              </td>
+              
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- #####################
+   #########################
+              Modal Editar Encuesta
+    ########################
+    ########################-->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Encuesta: &nbsp  </h1>
+            <h1  class="modal-title fs-5" id="encuestaNumero" ></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="editarEncuesta">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Editar Nombre de la encuesta:</label>
+                <input type="text" class="form-control"id="name" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Editar Descripción de la encuesta:</label>
+                <input type="text" class="form-control"id="description" name="description" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Actualizar encuesta</button>
+                
+              </div>
+            </form>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+    <!-- #####################
+   #########################
+              Modal Agregar  Capitulo
+    ########################
+    ########################-->
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Capitulo a la encuesta #: &nbsp </h1>
+            <h1 class="modal-title fs-5" id="encuestaNumeroCap"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="agregarCapitulo">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nombre Capitulo:</label>
+                <input type="text" class="form-control"  id="chapter_title" name="chapter_title" required>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Numero Capitulo</label>
+                <input type="text" class="form-control" id="chapter_number" name="chapter_number" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Crear Capitulo</button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+     <!-- #####################
+   #########################
+              Modal Editar Capitulo
+    ########################
+    ########################-->
+
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Capitulo </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Editar Nombre de Capitulo:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Editar Numero Capitulo:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Actualizar Capitulo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #####################
+   #########################
+              Modal Agregar  Pregunta
+    ########################
+    ########################-->
+
+    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Pregunta </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Numero Pregunta</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Tipo de respuesta de la pregunta</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Comentario de la pregunta</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Escriba su pregunta aqui </label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Crear Pregunta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #####################
+   #########################
+              Modal Editar  Pregunta
+    ########################
+    ########################-->
+
+    <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Pregunta </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Editar Numero Pregunta</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Editar Tipo de respuesta de la pregunta</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Editar Comentario de la pregunta</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Editar la pregunta </label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Actualizar Pregunta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #####################
+   #########################
+              Modal Agregar  Repuesta (lista)
+    ########################
+    ########################-->
+
+    <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Opción Respuesta </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Seleccione Opción de respuesta</label>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Seleccione opción de respuesta
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
+                
+              </div>
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Crear Pregunta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #####################
+   #########################
+              Modal Agregar  SUBPregunta
+    ########################
+    ########################-->
+
+    <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear SubPregunta </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Numero SubPregunta</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+             
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Escriba la Subpregunta aqui </label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Crear Pregunta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- #####################
+   #########################
+              Modal Editar Respuesta
+    ########################
+    ########################-->
+
+    <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Opción respuesta </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Seleccione Opción de respuesta</label>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Seleccione opción de respuesta
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </div>
+                
+              </div>
+              
+            </form>
+        </div>
+      </div>
+    </div>
+     <!-- #####################
+   #########################
+              Modal Agregar  Pregunta
+    ########################
+    ########################-->
+
+    <div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Opción Respuesta </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Nnombre opción respuesta</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary">Crear Opción respuesta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+
+    
+  </main>
+</body>
+<script src="appGestion.js"></script>
+<!-- js bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</html>
