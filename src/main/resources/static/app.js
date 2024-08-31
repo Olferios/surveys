@@ -283,7 +283,7 @@
 
 
 
-
+//crear encuesta
 document.getElementById('nuevaEncuesta').addEventListener('submit', function (event) {
     event.preventDefault(); // Previene que el formulario se envíe de forma convencional
 
@@ -293,7 +293,6 @@ document.getElementById('nuevaEncuesta').addEventListener('submit', function (ev
     for (let [key, value] of formData.entries()) {
         data[key] = value;
     }
-
     fetch('/api/survey', {
         method: 'POST',
         headers: {
