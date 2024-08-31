@@ -24,5 +24,5 @@ public class SurveyJson {
     private Survey survey;
 
     @Column(columnDefinition = "JSON", nullable = false)
-    private String payloadString = "";
+    private String payloadString;
 }

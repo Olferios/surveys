@@ -35,7 +35,7 @@ public class UserAdapter implements IUserService {
                 .map(existingUser -> {
                     existingUser.setUsername(user.getUsername());
                     existingUser.setPassword(user.getPassword());
-              
+                    existingUser.setEnable(user.isEnable());
                     return userRepository.save(existingUser);
                 })
                 .orElse(null);

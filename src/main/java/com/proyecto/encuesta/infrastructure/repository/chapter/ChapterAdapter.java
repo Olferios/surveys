@@ -34,7 +34,7 @@ public class ChapterAdapter implements IChapterService {
         return chapterRepository.findById(id)
                 .map(existingChapter -> {
                     existingChapter.setChapter_number(chapter.getChapter_number());
-                    existingChapter.setChapter_number(chapter.getChapter_title());
+                    existingChapter.setChapter_title(chapter.getChapter_title());
                     return chapterRepository.save(existingChapter);
                 })
                 .orElse(null);

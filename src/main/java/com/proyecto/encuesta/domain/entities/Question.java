@@ -15,7 +15,7 @@ public class Question {
  @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
-  @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "chapter_id")
     private Chapter chapter;
 
