@@ -235,92 +235,16 @@ document.addEventListener('DOMContentLoaded', function () {
   //agregarencuestas en edicion de capitulos
 
   document.addEventListener('DOMContentLoaded', function () {
-  var collapseElement = document.getElementById('collapseExample2');
- 
-
+  var collapseElement = document.getElementById('gestionCapitulos');
+  if (collapseElement) {
   cargarSurveyscap();
-  function cargarSurveyscap() {
-    fetch('/api/survey')
-      .then(response => response.json())
-      .then(data => {
-        const allSurveysDiv = document.getElementById('encuestasCapitulos');
+  cargarSurveyscap();
+  console.log('Actualiz');
+  };
 
-        tablaEncuesta = `   <table class="table">
-          <thead>
-            <tr>
-               <th scope="col">Id encuesta</th>
-              <th scope="col">Nombre Encuesta</th>
-              <th scope="col">Capitulo</th>
-              <th scope="col">Acciones</th>
-            </tr>
-          </thead>
-         
-               `;
-        data.forEach(survey => {
-          tablaEncuesta += `
-            
-                <tbody>
-                    <tr>
-                       <th scope="row">${survey.id}</th>
-                       <td>${survey.name}</td>
-                     <td>
-                <div class="btn-group">            
-                      <select   name="todasLasEncuestas" id="todasLasEncuestas${survey.id}">
-                <option value="">Seleccione una encuesta</option>
-            </select>
-               
-                </div>
-              </td>
-                     <td>
-                <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarEncuesta" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="cursor: pointer;"></i>
-                <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarEncuesta" title="Eliminar" style="cursor: pointer;"></i>
-                <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar capitulo" data-bs-toggle="modal" data-bs-target="#exampleModal2"style="cursor: pointer;"></i>
+  });
+  
 
-              </td>
-                       </td>
-                       
-                     </tr>
-                 `;
-                 cargarSurveysSelect(survey.id);
-              
-        });
-
-        allSurveysDiv.innerHTML += tablaEncuesta + `
-
-                `
-              
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }
-
-});
-
-
-function cargarSurveysSelect(id) {
-    fetch('/api/chapter')
-        .then(response => response.json())
-        .then(data => {
-            const allSurveysSelect = document.getElementById(`todasLasEncuestas${id}`);
-            allSurveysSelect.innerHTML = ''; // Limpiar opciones existentes
-            data.forEach(chapter => {
-              console.log("hola "+chapter.survey.id);
-              console.log("id "+id);
-              if(chapter.survey.id == id){
-                allSurveysSelect.innerHTML += `
-                <option value="${chapter.id}" selected>${chapter.chapter_number} ${chapter.chapter_title}</option>   `;
-              }
-               
-           
-            
-            });
-         
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-}
 
 //agregar capitulo a encuesta
   
@@ -349,37 +273,187 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-       document.getElementById('editarCapitulo').addEventListener('submit', function (event) {
-        event.preventDefault();
+document.getElementById('editarCapitulo').addEventListener('submit', function (event) {
+  event.preventDefault();
 
-        const selectedCapituloId = document.getElementById("encuestaNumeroCapEditar").textContent;
-       
-        if (!selectedCapituloId) {
-            alert('Por favor selecciona un capitulo para editar.');
-            return;
-        }
+  const selectedCapituloId = document.getElementById("encuestaNumeroCapEditar").textContent;
 
-        const formData = new FormData(this);
-        const data = {};
+  if (!selectedCapituloId) {
+    alert('Por favor selecciona un capítulo para editar.');
+    return;
+  }
 
-        for (let [key, value] of formData.entries()) {
-            data[key] = value;
-        }
-        console.log(data);
-        fetch(`/api/chapter/${selectedCapituloId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                alert('capitulo actualizada exitosamente');
-                cargarSurveys(); // Recargar las encuestas para reflejar los cambios
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+  const formData = new FormData(this);
+  const data = {};
+
+  for (let [key, value] of formData.entries()) {
+    data[key] = value;
+  }
+
+  fetch(`/api/chapter/${selectedCapituloId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      alert('Capítulo actualizado exitosamente');
+      cargarSurveyscap();
+      // Cerrar el modal después de la actualización exitosa
+      const modalElement = document.getElementById('exampleModal3');
+      const modal = bootstrap.Modal.getInstance(modalElement);
+      modal.hide();
+
+      // Recargar la lista de capítulos
+   
+    })
+    .catch(error => {
+      console.error('Error:', error);
     });
+});
+
+//eliminar capitulo
+document.addEventListener('DOMContentLoaded', function () {
+  // Usa el evento de clic en el contenedor de la tabla
+  const allSurveysDiv = document.getElementById('encuestasCapitulos');
+  allSurveysDiv.addEventListener('click', function (event) {
+
+  
+    // Verifica si el clic fue en un ícono de editar
+    if (event.target.classList.contains('bi-trash3-fill')) {
+      // Obtén el ID del atributo data-id
+      agregarCapitulo = event.target.getAttribute('data-id');
+      console.log(agregarCapitulo);
+      
+      const seleccionarCapitulo = document.getElementById(`todasLasEncuestas${agregarCapitulo}`).value;
+      if (!seleccionarCapitulo) {
+        alert('Por favor selecciona una capitulo para eliminar.');
+        return;
+      }
+      console.log('Obtén el ID del atributo'+seleccionarCapitulo);
+      
+      fetch(`/api/chapter/${seleccionarCapitulo}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            // Si la respuesta no tiene contenido (204 No Content), no intentamos analizar JSON.
+            if (response.status === 204) {
+              return null; // No hay cuerpo para analizar
+            }
+            return response.json(); // Para respuestas con cuerpo JSON
+          } else {
+            return response.text().then(text => {
+              throw new Error(`Error ${response.status}: ${text}`);
+            });
+          }
+        })
+        .then(data => {
+          if (data) {
+            console.log('capitulo eliminada:', data);
+          } else {
+            console.log('capitulo eliminada sin datos de respuesta.');
+          }
+          alert('capitulo eliminada exitosamente');
+          cargarSurveyscap();
+
+        })
+        .catch(err => {
+          console.error('Error:', err);
+          alert(`Ocurrió un error al eliminar el capitulo: ${err.message}`);
+        });
+    }
+
+  });
+    });
+
+
+
+function cargarSurveyscap() {
+  fetch('/api/survey')
+    .then(response => response.json())
+    .then(data => {
+      const allSurveysDiv = document.getElementById('encuestasCapitulos');
+      allSurveysDiv.innerHTML = "";
+      tablaEncuesta = `   <table class="table">
+        <thead>
+          <tr>
+             <th scope="col">Id encuesta</th>
+            <th scope="col">Nombre Encuesta</th>
+            <th scope="col">Capitulo</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+       
+             `;
+      data.forEach(survey => {
+        tablaEncuesta += `
+          
+              <tbody>
+                  <tr>
+                     <th scope="row">${survey.id}</th>
+                     <td>${survey.name}</td>
+                   <td>
+              <div class="btn-group">            
+                    <select   name="todasLasEncuestas" id="todasLasEncuestas${survey.id}">
+              <option value="">Seleccione una encuesta</option>
+          </select>
+             
+              </div>
+            </td>
+                   <td>
+              <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarCapitulo" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="cursor: pointer;"></i>
+              <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarCapitulo" title="Eliminar" style="cursor: pointer;"></i>
+              <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar Pregunta" data-bs-toggle="modal" data-bs-target="#exampleModal2"style="cursor: pointer;"></i>
+
+            </td>
+                     </td>
+                     
+                   </tr>
+               `;
+               cargarSurveysSelect(survey.id);
+            
+      });
+
+      allSurveysDiv.innerHTML += tablaEncuesta + `
+
+              `
+            
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+
+
+
+function cargarSurveysSelect(id) {
+  fetch('/api/chapter')
+      .then(response => response.json())
+      .then(data => {
+          const allSurveysSelect = document.getElementById(`todasLasEncuestas${id}`);
+          allSurveysSelect.innerHTML = ''; // Limpiar opciones existentes
+          data.forEach(chapter => {
+            console.log("hola "+chapter.survey.id);
+            console.log("id "+id);
+            if(chapter.survey.id == id){
+              allSurveysSelect.innerHTML += `
+              <option value="${chapter.id}" selected>${chapter.chapter_number} ${chapter.chapter_title}</option>   `;
+            }
+             
+         
+          
+          });
+       
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      });
+}
