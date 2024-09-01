@@ -517,33 +517,33 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Pregunta </h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Pregunta En El Capitulo #: &nbsp</h1>
+            <h1 class="modal-title fs-5" id="numeroCapitulo"></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="agregarPagina">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Numero Pregunta</label>
-                <input type="text" class="form-control" id="recipient-name">
+                <input type="text" class="form-control" id="question_number" name="question_number" required>
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Tipo de respuesta de la pregunta</label>
-                <textarea class="form-control" id="message-text"></textarea>
+                <input type="text" class="form-control" id="response_type" name="response_type" required>
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Comentario de la pregunta</label>
-                <textarea class="form-control" id="message-text"></textarea>
+                <input type="text" class="form-control" id="comment_question" name="comment_question" required>
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Escriba su pregunta aqui </label>
-                <textarea class="form-control" id="message-text"></textarea>
+                <input type="text" class="form-control" id="question_text" name="question_text" required>
+              </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnCrearPregunta" class="btn btn-primary">Crear Capitulo</button>
               </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary">Crear Pregunta</button>
-          </div>
         </div>
       </div>
     </div>
