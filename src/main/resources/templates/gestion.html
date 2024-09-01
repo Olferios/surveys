@@ -26,7 +26,7 @@
   </header>
 
   <nav>
-    <a href="#">Inicio</a>
+    <a href="/home">Inicio</a>
     <a href="#">Encuestas</a>
     <a href="#">Chapters</a>
     <a href="#">Preguntas</a>
@@ -99,8 +99,8 @@
       </div>
     </div>
     <div class="collapse" id="collapseExample2">
-      <div class="card card-body">
-        <table class="table">
+      <div class="card card-body"id=encuestasCapitulos>
+        <!-- <table class="table">
           <thead>
             <tr>
               <th scope="col">Id encuesta</th>
@@ -113,9 +113,7 @@
             <tr>
               <th scope="row">1</th>
               <td>Mark</td>
-              <!-- *************
-                 DROPDOWN DE CAPITULO
-                 *¨************************* -->
+         
               <td>
                 <div class="btn-group">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
@@ -148,7 +146,7 @@
               
             </tr>
           </tbody>
-        </table>
+        </table> -->
       </div>
     </div>
     <div class="collapse" id="collapseExample3">
@@ -452,7 +450,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Capitulo a la encuesta #: &nbsp </h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Capitulo a la encuesta #: &nbsp  </h1>
             <h1 class="modal-title fs-5" id="encuestaNumeroCap"></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
@@ -486,24 +484,25 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Capitulo </h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Capitulo: &nbsp </h1>
+            <h1 class="modal-title fs-5" id="encuestaNumeroCapEditar"></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id="editarCapitulo">
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Editar Nombre de Capitulo:</label>
-                <input type="text" class="form-control" id="recipient-name">
+                <input type="text" class="form-control" id="chapter_title" name="chapter_title" required>
               </div>
               <div class="mb-3">
                 <label for="message-text" class="col-form-label">Editar Numero Capitulo:</label>
-                <textarea class="form-control" id="message-text"></textarea>
+                <input type="text" class="form-control" id="chapter_number" name="chapter_number" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Actualizar Capitulo</button>
               </div>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary">Actualizar Capitulo</button>
           </div>
         </div>
       </div>
