@@ -302,6 +302,7 @@ document.getElementById('editarCapitulo').addEventListener('submit', function (e
       console.log('Success:', data);
       alert('Capítulo actualizado exitosamente');
       cargarSurveyscap();
+      this.reset(); 
       // Cerrar el modal después de la actualización exitosa
       const modalElement = document.getElementById('exampleModal3');
       const modal = bootstrap.Modal.getInstance(modalElement);
@@ -370,6 +371,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+
+    
   });
     });
 
@@ -410,7 +413,7 @@ function cargarSurveyscap() {
                    <td>
               <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarCapitulo" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="cursor: pointer;"></i>
               <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarCapitulo" title="Eliminar" style="cursor: pointer;"></i>
-              <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar Pregunta" data-bs-toggle="modal" data-bs-target="#exampleModal2"style="cursor: pointer;"></i>
+              <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar Pregunta" data-bs-toggle="modal" data-bs-target="#exampleModal4"style="cursor: pointer;"></i>
 
             </td>
                      </td>
@@ -457,3 +460,72 @@ function cargarSurveysSelect(id) {
           console.error('Error:', error);
       });
 }
+//agregar capitulo anombre agregar pagina
+
+  
+document.addEventListener('DOMContentLoaded', function () {
+  // Usa el evento de clic en el contenedor de la tabla
+  const editarCapituloContenedor = document.getElementById('encuestasCapitulos');
+  
+  editarCapituloContenedor.addEventListener('click', function (event) {
+    // Verifica si el clic fue en un ícono de editar
+    if (event.target.classList.contains('bi-plus-square-fill')) {
+      // Obtén el ID de la encuesta del atributo data-id del ícono
+      const encuestaId = event.target.getAttribute('data-id');
+  console.log(encuestaId);
+      // Encuentra el <select> asociado a esta encuesta
+      const selectElement = document.getElementById(`todasLasEncuestas${encuestaId}`);
+  
+      // Obtén el capítulo seleccionado del <select>
+      document.getElementById("numeroCapitulo").innerText = selectElement.value;
+      // Actualiza el texto o realiza cualquier acción con el capítulo seleccionado
+ 
+      console.log('ID del capítulo seleccionado para editar:', selectElement.value);
+    }
+  });
+});
+//agregar pagina a capitulo
+document.getElementById('agregarPagina').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const numeroCapitulo = document.getElementById("question_number").value;
+  const tipoRespuesta = document.getElementById("response_type").value;
+  const comentarioPregunta = document.getElementById("comment_question").value;
+  const textoPregunta = document.getElementById("question_text").value;
+  const capituloId = parseInt(document.getElementById("numeroCapitulo").textContent); // Convierte a entero
+     
+
+      // Crear el objeto JSON en el formato deseado
+      const chapter = {
+        "question_number":  numeroCapitulo,
+        chapter: { id: capituloId },
+        
+        "response_type":tipoRespuesta,
+        "comment_question":comentarioPregunta,
+        
+        "question_text":textoPregunta
+      };
+    //   const chapter = {
+    //     survey: { id: surveyId },  // Asegúrate de que surveyId esté en formato numérico
+    //     chapter_number: chapterNumber,  // Utiliza chapterNumber en lugar de chapter_number
+    //     chapter_title: chapterTitle  // Utiliza chapterTitle en lugar de chapter_title
+    // };
+
+      console.log(chapter);
+      fetch('/api/question', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(chapter)
+      })
+          .then(response => response.json())
+          .then(data => {
+              console.log('Success:', chapter);
+              alert('Pregunta Registrada Exitosamente');
+              this.reset(); // Resetea el formulario después de la creación exitosa
+              window.location.href = '/gestion';
+          })
+          .catch((error) => {
+              console.error('Error:', error);
+          });
+        });
