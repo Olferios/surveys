@@ -641,3 +641,153 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+// actualizar pregunta
+
+
+
+document.getElementById('editarPregunta').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const selectPregunta = document.getElementById("numeroPregunta").textContent;
+  if (!selectPregunta) {
+    alert('Por favor selecciona una encuesta para editar.');
+    return;
+  }
+
+  const formData = new FormData(this);
+  const data = {};
+
+  for (let [key, value] of formData.entries()) {
+    data[key] = value;
+  }
+console.log(data);
+  fetch(`/api/question/${selectPregunta}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      alert('Encuesta actualizada exitosamente');
+      this.reset();
+      // Cerrar el modal después de la actualización exitosa
+      const modalElement = document.getElementById('exampleModal5');
+      const modal = bootstrap.Modal.getInstance(modalElement);
+      modal.hide();
+      cargarSurveyscapPregunta();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+});
+
+
+
+// pregunta
+document.addEventListener('DOMContentLoaded', function () {
+  // Usa el evento de clic en el contenedor de la tabla
+  const allSurveysDiv = document.getElementById('capitulosecPreguntas');
+  allSurveysDiv.addEventListener('click', function (event) {
+
+
+    // Verifica si el clic fue en un ícono de editar
+    if (event.target.classList.contains('bi-trash3-fill')) {
+      // Obtén el ID del atributo data-id
+      console.log('eliminado');
+      agregarCapitulo = event.target.getAttribute('data-id');
+      console.log(agregarCapitulo);
+
+      const seleccionarCapitulo = document.getElementById(`capituloPreguntas${agregarCapitulo}`).value;
+      if (!seleccionarCapitulo) {
+        alert('Por favor selecciona una capitulo para eliminar.');
+        return;
+      }
+      console.log('Obtén el ID del atributo' + seleccionarCapitulo);
+
+      fetch(`/api/question/${seleccionarCapitulo}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            // Si la respuesta no tiene contenido (204 No Content), no intentamos analizar JSON.
+            if (response.status === 204) {
+              return null; // No hay cuerpo para analizar
+            }
+            return response.json(); // Para respuestas con cuerpo JSON
+          } else {
+            return response.text().then(text => {
+              throw new Error(`Error ${response.status}: ${text}`);
+            });
+          }
+        })
+        .then(data => {
+          if (data) {
+            console.log('capitulo eliminada:', data);
+          } else {
+            console.log('capitulo eliminada sin datos de respuesta.');
+          }
+          alert('capitulo eliminada exitosamente');
+          cargarSurveyscap();
+
+        })
+        .catch(err => {
+          console.error('Error:', err);
+          alert(`Ocurrió un error al eliminar el capitulo: ${err.message}`);
+        });
+    }
+
+
+
+  });
+});
+
+
+// document.getElementById('editarPregunta').addEventListener('submit', function (event) {
+//   event.preventDefault();
+
+//   const selectIdPregunta = document.getElementById("numeroPregunta").textContent;
+
+//   if (!selectIdPregunta) {
+//     alert('Por favor selecciona un capítulo para editar.');
+    
+//     return;
+    
+//   }
+ 
+
+//   for (let [key, value] of formData.entries()) {
+//     data[key] = value;
+//   }
+// console.log(data);
+//   // fetch(`/api/chapter/${selectedCapituloId}`, {
+//   //   method: 'PUT',
+//   //   headers: {
+//   //     'Content-Type': 'application/json'
+//   //   },
+//   //   body: JSON.stringify(data)
+//   // })
+//   //   .then(response => response.json())
+//   //   .then(data => {
+//   //     console.log('Success:', data);
+//   //     alert('Capítulo actualizado exitosamente');
+//   //     cargarSurveyscap();
+//   //     this.reset();
+//   //     // Cerrar el modal después de la actualización exitosa
+//   //     const modalElement = document.getElementById('exampleModal3');
+//   //     const modal = bootstrap.Modal.getInstance(modalElement);
+//   //     modal.hide();
+
+//   //     // Recargar la lista de capítulos
+
+//   //   })
+//   //   .catch(error => {
+//   //     console.error('Error:', error);
+//   //   });
+// });
