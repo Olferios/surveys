@@ -36,7 +36,7 @@ public class QuestionAdapter implements IQuestionService {
                     existingQuestion.setQuestion_number(question.getQuestion_number());
                     existingQuestion.setResponse_type(question.getResponse_type());
                     existingQuestion.setComment_question(question.getComment_question());
-                    existingQuestion.setQuestion_number(question.getQuestion_number());
+                    existingQuestion.setQuestion_text(question.getQuestion_text());
                     return questionRepository.save(existingQuestion);
                 })
                 .orElse(null);

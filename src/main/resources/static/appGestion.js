@@ -614,3 +614,30 @@ function cargarQuestionSelect(surveyId, selectElement) {
           console.error('Error:', error);
       });
 }
+
+
+
+//agregar capitulo anombre agregar pagina
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Usa el evento de clic en el contenedor de la tabla
+  const editarCapituloContenedor = document.getElementById('capitulosecPreguntas');
+
+  editarCapituloContenedor.addEventListener('click', function (event) {
+    // Verifica si el clic fue en un ícono de editar
+    if (event.target.classList.contains('bi-pencil-fill')) {
+      // Obtén el ID de la encuesta del atributo data-id del ícono
+      const encuestaId = event.target.getAttribute('data-id');
+      console.log("editar pregunta"+encuestaId) ;
+      // Encuentra el <select> asociado a esta encuesta
+      const selectElement = document.getElementById(`capituloPreguntas${encuestaId}`);
+
+      // Obtén el capítulo seleccionado del <select>
+      document.getElementById("numeroPregunta").innerText = selectElement.value;
+      // Actualiza el texto o realiza cualquier acción con el capítulo seleccionado
+
+      console.log('ID del capítulo seleccionado para editar:', selectElement.value);
+    }
+  });
+});
