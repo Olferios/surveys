@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta JOANOLF</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- css bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+  <header>
+    <h1>Encuestas.com</h1>
+  </header>
+
+  <nav>
+    <a href="/home">Inicio</a>
+    <a href="#">Encuestas</a>
+    <a href="#">Chapters</a>
+    <a href="#">Preguntas</a>
+    <a href="#">Respuestas</a>
+  </nav>
+
+  <main>
+    <p>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        Gestión Encuesta
+      </button>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2"
+        aria-expanded="false" aria-controls="collapseExample2">
+        Gestión Capitulos
+      </button>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3"
+        aria-expanded="false" aria-controls="collapseExample3">
+        Gestión Preguntas
+      </button>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample5"
+        aria-expanded="false" aria-controls="collapseExample5">
+        Gestión SubPreguntas
+      </button>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4"
+        aria-expanded="false" aria-controls="collapseExample4">
+        Gestión Opción Respuestas
+      </button>
+    </p>
+
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body" id="todasEncuestas">
+        <!-- Contenido para gestión de encuestas -->
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample2">
+      <div class="card card-body" id="encuestasCapitulos">
+        <!-- Contenido para gestión de capítulos -->
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample3">
+      <div class="card card-body" id="capitulosecPreguntas">
+        <!-- Contenido para gestión de preguntas -->
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample4">
+      <div class="card card-body" id="capituloSecPreguntas">
+        <!-- Contenido para gestión de opciones de respuestas -->
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample5">
+      <div class="card card-body">
+        <h1>Hola</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id encuesta</th>
+              <th scope="col">Nombre Encuesta</th>
+              <th scope="col">Capitulo</th>
+              <th scope="col">Preguntas</th>
+              <th scope="col">SubPreguntas</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>
+                <!-- DROPDOWN DE CAPITULO -->
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="gestionCapitulos"
+                    data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Capitulo
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="gestionCapitulos">
+                    <li><a class="dropdown-item" href="#">Capitulo 1</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 2</a></li>
+                    <li><a class="dropdown-item" href="#">Capitulo 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              <td>
+                <!-- DROPDOWN DE PREGUNTA -->
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside"
+                    data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione Pregunta
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                    <li><a class="dropdown-item" href="#">Pregunta 1</a></li>
+                    <li><a class="dropdown-item" href="#">Pregunta 2</a></li>
+                    <li><a class="dropdown-item" href="#">Pregunta 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              <td>
+                <!-- DROPDOWN DE SUBPREGUNTA -->
+                <div class="btn-group">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuSubPreguntas"
+                    data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
+                    Seleccione SubPregunta
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuSubPreguntas">
+                    <li><a class="dropdown-item" href="#">SubPregunta 1</a></li>
+                    <li><a class="dropdown-item" href="#">SubPregunta 2</a></li>
+                    <li><a class="dropdown-item" href="#">SubPregunta 3</a></li>
+                  </ul>
+                </div>
+              </td>
+              <td>
+                <!-- ICONOS DE ACCIONES -->
+                <i class="bi bi-pencil-fill" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                  style="cursor: pointer;"></i>
+                <i class="bi bi-trash3-fill" title="Eliminar" style="cursor: pointer;"></i>
+                <i class="bi bi-receipt" title="Agregar SubPregunta" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal7" style="cursor: pointer;"></i>
+                <i class="bi bi-plus-square-fill" title="Agregar Opción Respuesta" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal6" style="cursor: pointer;"></i>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MODAL EDITAR ENCUESTA -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Encuesta: &nbsp;</h1>
+            <h1 class="modal-title fs-5" id="encuestaNumero"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="editarEncuesta">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Editar Nombre de la encuesta:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Editar Descripción de la encuesta:</label>
+                <input type="text" class="form-control" id="description" name="description" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Actualizar encuesta</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL AGREGAR OPCION RESPUESTA -->
+    <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel6" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel6">Modal 6</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Hola Mundo</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL AGREGAR SUBPREGUNTA -->
+    <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel7" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel7">Agregar SubPregunta</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="agregarSubPregunta">
+              <div class="mb-3">
+                <label for="subPregunta-text" class="col-form-label">SubPregunta:</label>
+                <input type="text" class="form-control" id="subPregunta" name="subPregunta" required>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Agregar SubPregunta</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Encuestas.com. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXlRYo0HCi6cOYQbYShZ6frZXyFgupKj/jtonIphok9TO/oHhZQ5f5y4bO/z" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhG68VrPAK8s+FujLgXxHrAHQr06zYlRrE8uBBk52pIBWCKkHh9xX2Qii0yQ" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

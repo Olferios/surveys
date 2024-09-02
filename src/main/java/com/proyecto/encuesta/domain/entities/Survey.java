@@ -41,8 +41,8 @@ public class Survey {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    private boolean enable;
+    @Column( nullable = false)
+    private boolean enable=true;
 
     @Embedded
     private Audit audit = new Audit();

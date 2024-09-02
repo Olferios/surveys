@@ -328,6 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Verifica si el clic fue en un ícono de editar
     if (event.target.classList.contains('bi-trash3-fill')) {
       // Obtén el ID del atributo data-id
+      console.log('eliminado');
       agregarCapitulo = event.target.getAttribute('data-id');
       console.log(agregarCapitulo);
 
@@ -423,7 +424,7 @@ function cargarSurveyscap() {
                    </tr>
                `;
         cargarSurveysSelect(survey.id,"todasLasEncuestas");
-
+        cargarSurveyscapPregunta();
       });
 
       allSurveysDiv.innerHTML += tablaEncuesta + `
@@ -438,27 +439,21 @@ function cargarSurveyscap() {
 
 
 
-
-function cargarSurveysSelect(id,elemento) {
+function cargarSurveysSelect(id, elemento) {
   fetch('/api/chapter')
     .then(response => response.json())
     .then(data => {
       const allSurveysSelect = document.getElementById(`${elemento}${id}`);
-      allSurveysSelect.innerHTML = ''; // Limpiar opciones existentes
+      allSurveysSelect.innerHTML = '<option value="">Seleccione una encuesta</option>'; // Limpiar opciones existentes
       data.forEach(chapter => {
-        console.log("hola " + chapter.survey.id);
-        console.log("id " + id);
-        if (chapter.survey.id == id) {
+        if (chapter.survey.id === id) {
           allSurveysSelect.innerHTML += `
-              <option value="${chapter.id}" selected>${chapter.chapter_number} ${chapter.chapter_title}</option>   `;
+            <option value="${chapter.id}">${chapter.chapter_number} ${chapter.chapter_title}</option>
+          `;
         }
-
-
-
       });
-
     })
-    .catch((error) => {
+    .catch(error => {
       console.error('Error:', error);
     });
 }
@@ -532,154 +527,90 @@ document.getElementById('agregarPagina').addEventListener('submit', function (ev
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Usa el evento de clic en el contenedor de la tabla
-  const allSurveysDiv = document.getElementById('encuestasCapitulos');
-  allSurveysDiv.addEventListener('click', function (event) {
-
-
-    // Verifica si el clic fue en un ícono de editar
-    if (event.target.classList.contains('bi-trash3-fill')) {
-      // Obtén el ID del atributo data-id
-      agregarCapitulo = event.target.getAttribute('data-id');
-      console.log(agregarCapitulo);
-
-      const seleccionarCapitulo = document.getElementById(`todasLasEncuestas${agregarCapitulo}`).value;
-      if (!seleccionarCapitulo) {
-        alert('Por favor selecciona una capitulo para eliminar.');
-        return;
-      }
-      console.log('Obtén el ID del atributo' + seleccionarCapitulo);
-
-      fetch(`/api/chapter/${seleccionarCapitulo}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8'
-        }
-      })
-        .then(response => {
-          if (response.ok) {
-            // Si la respuesta no tiene contenido (204 No Content), no intentamos analizar JSON.
-            if (response.status === 204) {
-              return null; // No hay cuerpo para analizar
-            }
-            return response.json(); // Para respuestas con cuerpo JSON
-          } else {
-            return response.text().then(text => {
-              throw new Error(`Error ${response.status}: ${text}`);
-            });
-          }
-        })
-        .then(data => {
-          if (data) {
-            console.log('capitulo eliminada:', data);
-          } else {
-            console.log('capitulo eliminada sin datos de respuesta.');
-          }
-          alert('capitulo eliminada exitosamente');
-          cargarSurveyscap();
-
-        })
-        .catch(err => {
-          console.error('Error:', err);
-          alert(`Ocurrió un error al eliminar el capitulo: ${err.message}`);
-        });
-    }
-
-
-
-  });
-});
-
-
-
 
 
 function cargarSurveyscapPregunta() {
   fetch('/api/survey')
-    .then(response => response.json())
-    .then(data => {
-      const allSurveysDiv = document.getElementById('capituloPreguntas');
-      allSurveysDiv.innerHTML = "";
-      tablaEncuesta = `   <table class="table">
-            <thead>
-              <tr>
-          <th scope="col">Id encuesta</th>
-              <th scope="col">Nombre Encuesta</th>
-              <th scope="col">Capitulo</th>
-              <th scope="col">Preguntas</th>
-              <th scope="col">Acciones</th>
-              </tr>
-            </thead>
-           
-                 `;
-      data.forEach(survey => {
-        tablaEncuesta += `
-              
-                  <tbody>
+      .then(response => response.json())
+      .then(data => {
+          const gestionPreguntas = document.getElementById('capitulosecPreguntas');
+          gestionPreguntas.innerHTML = "";
+           tablaPregunta = `
+              <table class="table">
+                  <thead>
                       <tr>
-                         <th scope="row">${survey.id}</th>
-                         <td>${survey.name}</td>
-                       <td>
-                            <div class="btn-group">            
-                               <select   name="todasLasEncuestas" id="capituloPreguntas${survey.id}">
-                                   <option value="">Seleccione una encuesta</option>
-                               </select>
-                             </div>
-                       </td>
-                        <td>
-                            <div class="btn-group">            
-                               <select   name="todasLasEncuestas" id="capiuloPreguntas2${survey.id}">
-                                   <option value="">Seleccione una pregunta</option>
-                               </select>
-                             </div>
-                       </td>
-                       <td>
-                  <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarCapitulo" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="cursor: pointer;"></i>
-                  <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarCapitulo" title="Eliminar" style="cursor: pointer;"></i>
-                  <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar Pregunta" data-bs-toggle="modal" data-bs-target="#exampleModal4"style="cursor: pointer;"></i>
-    
-                </td>
-                         </td>
-                         
-                       </tr>
-                   `;
-        cargarSurveysSelect(survey.id,"capituloPreguntas");
-        cargarQuestionSelect(survey.id,"capiuloPreguntas2");
+                          <th scope="col">Id encuesta</th>
+                          <th scope="col">Nombre Encuesta</th>
+                          <th scope="col">Capitulo</th>
+                          <th scope="col">Preguntas</th>
+                          <th scope="col">Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody> `;
+      data.forEach(survey => {
+        
+        tablaPregunta += `
+                          <tr>
+                              <th scope="row">${survey.id}</th>
+                              <td>${survey.name}</td>
+                              <td>
+                                  <div class="btn-group">
+                                      <select onchange="cargarQuestionSelect(${survey.id}, this)" name="todasLasEncuestas" id="encuestaCapituloSec${survey.id}">
+                                          <option value="">Seleccione un capítulo</option>
+                                      </select>
+                                  </div>
+                              </td>
+                              <td>
+                                  <div class="btn-group">
+                                      <select name="todasLasEncuestas" id="capituloPreguntas${survey.id}">
+                                          <option value="">Seleccione una pregunta</option>
+                                      </select>
+                                  </div>
+                              </td>
+                              <td>
+              
+                                  <i class="bi bi-pencil-fill" data-id="${survey.id}" id="editarCapitulo"title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal5"
+                  style="cursor: pointer;"></i>
+                                  <i class="bi bi-trash3-fill" data-id="${survey.id}" id="eliminarCapitulo" title="Eliminar" style="cursor: pointer;"></i>
+                                  <i class="bi bi-plus-square-fill" data-id="${survey.id}" title="Agregar Respuesta" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal6" style="cursor: pointer;"></i>
+                    </td>
+                          </tr>
+                      `;
+                      cargarSurveysSelect(survey.id,"encuestaCapituloSec");
+                    });
 
+                    gestionPreguntas.innerHTML += tablaPregunta + `
+              
+                            `
+              
+                  })
+                  .catch((error) => {
+                    console.error('Error:', error);
+                  });
+              }
+              
 
-      });
-
-      allSurveysDiv.innerHTML += tablaEncuesta + `
-    
-                  `
-
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-}
-
-function cargarSurveysSelect(id,elemento) {
+function cargarQuestionSelect(surveyId, selectElement) {
+  const capituloSeleccionado = selectElement.value;
+  console.log('Seleccionado '+capituloSeleccionado);
   fetch('/api/question')
-    .then(response => response.json())
-    .then(data => {
-      const allSurveysSelect = document.getElementById(`${elemento}${id}`);
-      allSurveysSelect.innerHTML = ''; // Limpiar opciones existentes
-      data.forEach(question => {
-        console.log("hola " + question.survey.id);
-        console.log("id " + id);
-        if (chapter.survey.id == id) {
-          allSurveysSelect.innerHTML += `
-              <option value="${chapter.id}" selected>${chapter.chapter_number} ${chapter.chapter_title}</option>   `;
-        }
+      .then(response => response.json())
+      .then(data => {
 
-
-
+          const preguntaSelect = document.getElementById(`capituloPreguntas${surveyId}`);
+          preguntaSelect.innerHTML = '<option value="">Seleccione una pregunta</option>'; // Limpiar opciones existentes
+          data.forEach(question => {
+            if (question.chapter.id==capituloSeleccionado){
+              console.log('Pregunta encontrada');
+              preguntaSelect.innerHTML += `
+                      <option value="${question.id}">${question.question_text}</option>
+                  `;
+            }
+             
+          });
+      })
+      .catch(error => {
+          console.error('Error:', error);
       });
-
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
 }
