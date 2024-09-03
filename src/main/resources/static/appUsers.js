@@ -71,23 +71,7 @@ console.log(survey);
                        
                      </tr>
                  `;
-          } else {
-            tablaEncuesta += `
-            
-                <tbody>
-                    <tr>
-                       <th scope="row">${survey.id}</th>
-                       <td>${survey.name}</td>
-                        <td>${survey.description}</td>
-                     <td>
-              
-              </td>
-                       </td>
-                       
-                     </tr>
-                 `;
-          }
-
+          } 
         });
         allSurveysDiv.innerHTML += tablaEncuesta + `
 
@@ -468,7 +452,8 @@ function cargarSurveyscap() {
        
              `;
       data.forEach(survey => {
-        tablaEncuesta += `
+         if (survey.enable == true) {
+            tablaEncuesta += `
           
               <tbody>
                   <tr>
@@ -477,7 +462,7 @@ function cargarSurveyscap() {
                    <td>
               <div class="btn-group">            
                     <select   name="todasLasEncuestas" id="todasLasEncuestas${survey.id}">
-              <option value="">Seleccione una encuesta</option>
+              <option value="">Seleccione un capitulo</option>
           </select>
              
               </div>
@@ -488,7 +473,7 @@ function cargarSurveyscap() {
                      </td>
                      
                    </tr>
-               `;
+               `;}
         cargarSurveysSelect(survey.id, "todasLasEncuestas");
         cargarSurveyscapPregunta();
       });
@@ -510,7 +495,7 @@ function cargarSurveysSelect(id, elemento) {
     .then(response => response.json())
     .then(data => {
       const allSurveysSelect = document.getElementById(`${elemento}${id}`);
-      allSurveysSelect.innerHTML = '<option value="">Seleccione una encuesta</option>'; // Limpiar opciones existentes
+      allSurveysSelect.innerHTML = '<option value="">Seleccione una capitulo</option>'; // Limpiar opciones existentes
       data.forEach(chapter => {
         if (chapter.survey.id === id) {
           allSurveysSelect.innerHTML += `
@@ -614,7 +599,8 @@ function cargarSurveyscapPregunta() {
                   </thead>
                   <tbody> `;
       data.forEach(survey => {
-
+        console.log(survey.enable);
+        if (survey.enable == true) {
         tablaPregunta += `
                           <tr>
                               <th scope="row">${survey.id}</th>
@@ -637,7 +623,7 @@ function cargarSurveyscapPregunta() {
               
                        </td>
                           </tr>
-                      `;
+                      `};
         cargarSurveysSelect(survey.id, "encuestaCapituloSec");
       });
 
@@ -1053,7 +1039,8 @@ function cargarOpcionRespuesta() {
                   </thead>
                   <tbody> `;
       data.forEach(survey => {
-
+        console.log(survey.enable);
+if (survey.enable==true) {
         tablaPregunta += `
                           <tr>
                               <th scope="row">${survey.id}</th>
@@ -1081,7 +1068,7 @@ function cargarOpcionRespuesta() {
                               </td>
                              
                           </tr>
-                      `;
+                      `};
         cargarSurveysSelect(survey.id, "todoCapituloRes");
 
       });

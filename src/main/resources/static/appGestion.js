@@ -1284,3 +1284,38 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
+//crear encuesta
+document.getElementById('nuevaEncuesta').addEventListener('submit', function (event) {
+  event.preventDefault(); // Previene que el formulario se envíe de forma convencional
+
+  const formData = new FormData(this);
+  const data = {};
+
+  for (let [key, value] of formData.entries()) {
+      data[key] = value;
+  }
+  fetch('/api/survey', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  })
+      .then(response => response.json())
+      .then(data => {
+          console.log('Success:', data);
+          alert('Encuesta Registrada Exitosamente');
+          this.reset(); // Resetea el formulario después de la creación exitosa
+          // cargarSurveys(); // Recargar las encuestas para incluir la nueva
+          const modalElement = document.getElementById('exampleModal');
+          const modal = bootstrap.Modal.getInstance(modalElement);
+          window.location.href = '/gestion';
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      });
+});
+
+
+
