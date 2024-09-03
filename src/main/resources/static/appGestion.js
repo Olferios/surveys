@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(data => {
         const allSurveysDiv = document.getElementById('todasEncuestas');
 
-        
+
 
         tablaEncuesta = `   <table class="table">
           <thead>
@@ -75,9 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         allSurveysDiv.innerHTML += tablaEncuesta + `
 
                 `;
-                allSurveysDiv.innerHTML += tablaEncuesta + `
 
-                `;
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -429,7 +427,7 @@ function cargarSurveyscap() {
                      
                    </tr>
                `;
-        cargarSurveysSelect(survey.id,"todasLasEncuestas");
+        cargarSurveysSelect(survey.id, "todasLasEncuestas");
         cargarSurveyscapPregunta();
       });
 
@@ -537,11 +535,11 @@ document.getElementById('agregarPagina').addEventListener('submit', function (ev
 
 function cargarSurveyscapPregunta() {
   fetch('/api/survey')
-      .then(response => response.json())
-      .then(data => {
-          const gestionPreguntas = document.getElementById('capitulosecPreguntas');
-          gestionPreguntas.innerHTML = "";
-           tablaPregunta = `
+    .then(response => response.json())
+    .then(data => {
+      const gestionPreguntas = document.getElementById('capitulosecPreguntas');
+      gestionPreguntas.innerHTML = "";
+      tablaPregunta = `
               <table class="table">
                   <thead>
                       <tr>
@@ -554,7 +552,7 @@ function cargarSurveyscapPregunta() {
                   </thead>
                   <tbody> `;
       data.forEach(survey => {
-        
+
         tablaPregunta += `
                           <tr>
                               <th scope="row">${survey.id}</th>
@@ -583,42 +581,42 @@ function cargarSurveyscapPregunta() {
                     </td>
                           </tr>
                       `;
-                      cargarSurveysSelect(survey.id,"encuestaCapituloSec");
-                    });
+        cargarSurveysSelect(survey.id, "encuestaCapituloSec");
+      });
 
-                    gestionPreguntas.innerHTML += tablaPregunta + `
+      gestionPreguntas.innerHTML += tablaPregunta + `
               
                             `
-              
-                  })
-                  .catch((error) => {
-                    console.error('Error:', error);
-                  });
-              }
-              
+
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
 
 function cargarQuestionSelect(surveyId, selectElement) {
   const capituloSeleccionado = selectElement.value;
-  console.log('Seleccionado '+capituloSeleccionado);
+  console.log('Seleccionado ' + capituloSeleccionado);
   fetch('/api/question')
-      .then(response => response.json())
-      .then(data => {
+    .then(response => response.json())
+    .then(data => {
 
-          const preguntaSelect = document.getElementById(`capituloPreguntas${surveyId}`);
-          preguntaSelect.innerHTML = '<option value="">Seleccione una pregunta</option>'; // Limpiar opciones existentes
-          data.forEach(question => {
-            if (question.chapter.id==capituloSeleccionado){
-              console.log('Pregunta encontrada');
-              preguntaSelect.innerHTML += `
+      const preguntaSelect = document.getElementById(`capituloPreguntas${surveyId}`);
+      preguntaSelect.innerHTML = '<option value="">Seleccione una pregunta</option>'; // Limpiar opciones existentes
+      data.forEach(question => {
+        if (question.chapter.id == capituloSeleccionado) {
+          console.log('Pregunta encontrada');
+          preguntaSelect.innerHTML += `
                       <option value="${question.id}">${question.question_text}</option>
                   `;
-            }
-             
-          });
-      })
-      .catch(error => {
-          console.error('Error:', error);
+        }
+
       });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 }
 
 
@@ -635,7 +633,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (event.target.classList.contains('bi-pencil-fill')) {
       // Obtén el ID de la encuesta del atributo data-id del ícono
       const encuestaId = event.target.getAttribute('data-id');
-      console.log("editar pregunta"+encuestaId) ;
+      console.log("editar pregunta" + encuestaId);
       // Encuentra el <select> asociado a esta encuesta
       const selectElement = document.getElementById(`capituloPreguntas${encuestaId}`);
 
@@ -648,7 +646,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (event.target.classList.contains('bi-trash3-fill')) {
       // Obtén el ID de la encuesta del atributo data-id del ícono
       const encuestaId = event.target.getAttribute('data-id');
-      console.log("editar pregunta"+encuestaId) ;
+      console.log("editar pregunta" + encuestaId);
       // Encuentra el <select> asociado a esta encuesta
       const selectElement = document.getElementById(`capituloPreguntas${encuestaId}`);
 
@@ -666,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (event.target.classList.contains('bi-plus-square-fill')) {
       // Obtén el ID de la encuesta del atributo data-id del ícono
       const encuestaId = event.target.getAttribute('data-id');
-      console.log("editar pregunta"+encuestaId) ;
+      console.log("editar pregunta" + encuestaId);
       // Encuentra el <select> asociado a esta encuesta
       const selectElement = document.getElementById(`capituloPreguntas${encuestaId}`);
 
@@ -677,9 +675,6 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('ID del capítulo seleccionado para editar:', selectElement.value);
       cargarOption();
 
-
-
-
     }
   });
 });
@@ -689,77 +684,150 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function cargarOption() {
   fetch('/api/options')
-      .then(response => response.json())
-      .then(data => {
-          const gestionPreguntas = document.getElementById('seleccionOpcion');
-          gestionPreguntas.innerHTML = "";
-    console.log(data);
+    .then(response => response.json())
+    .then(data => {
+      const gestionPreguntas = document.getElementById('seleccionOpcion');
+      gestionPreguntas.innerHTML = "";
+      console.log(data);
       data.forEach(option => {
-        
-        gestionPreguntas.innerHTML  += `
+
+        gestionPreguntas.innerHTML += `
           <option value="${option.id}">${option.optiontext}</option>
                          
                       `;
-                   
-                    });
 
-  
-              
-                  })
-                  .catch((error) => {
-                    console.error('Error:', error);
-                  });
-              }
+      });
 
 
 
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+
+
+function cargarOptionEditar() {
+  fetch('/api/options')
+    .then(response => response.json())
+    .then(data => {
+      const gestionPreguntas = document.getElementById('seleccionOpcionEditar');
+      gestionPreguntas.innerHTML = "";
+      console.log(data);
+      data.forEach(option => {
+
+        gestionPreguntas.innerHTML += `
+          <option value="${option.id}">${option.optiontext}</option>
+                         
+                      `;
+
+      });
+
+
+
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
 //agregar opcion respuesta 
 
 
-          function agregarOption(){
+function agregarOption() {
 
-             const selectPregunta = document.getElementById("seleccionarPregunta").textContent;
-             if (!selectPregunta) {
-                 alert('Por favor selecciona una encuesta para agregar una opción.');
-                 return;
-             }
+  const selectPregunta = document.getElementById("seleccionarPregunta").textContent;
+  if (!selectPregunta) {
+    alert('Por favor selecciona una encuesta para agregar una opción.');
+    return;
+  }
 
 
-              const opcionSeleccionada = document.getElementById("seleccionOpcion").value;
-              console.log(opcionSeleccionada);
-              const data = {
-                  "subresponse_number":1,
-                  "question": {"id":parseInt(selectPregunta)},
-                  "options":{"id":parseInt(opcionSeleccionada)}
-              };
+  const opcionSeleccionada = document.getElementById("seleccionOpcion").value;
+  console.log(opcionSeleccionada);
+  const data = {
+    "subresponse_number": 1,
+    "question": { "id": parseInt(selectPregunta) },
+    "options": { "id": parseInt(opcionSeleccionada) }
+  };
 
-              fetch('/api/OptionQuestion', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    alert('Encuesta Registrada Exitosamente');
-                   
-                    // cargarSurveys(); // Recargar las encuestas para incluir la nueva
-                    const modalElement = document.getElementById('exampleModal6');
-                    const modal = bootstrap.Modal.getInstance(modalElement);
-                   
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+  fetch('/api/OptionQuestion', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      alert('Encuesta Registrada Exitosamente');
 
-              // {
-              //   "subresponse_number":1,
-              //       "question": {"id":1},
-              //   "options":{"id":1}
-              //   }
-          }
+      // cargarSurveys(); // Recargar las encuestas para incluir la nueva
+      const modalElement = document.getElementById('exampleModal6');
+      const modal = bootstrap.Modal.getInstance(modalElement);
+      modal.hide();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+  // {
+  //   "subresponse_number":1,
+  //       "question": {"id":1},
+  //   "options":{"id":1}
+  //   }
+}
+
+
+
+// agregar numoro optionrespuesta a editar
+
+
+
+// actualizar opcion respuesta
+
+
+
+
+function ActualizarOption() {
+
+  const selectPregunta = document.getElementById("numeroRespuesta").textContent;
+  console.log(selectPregunta)
+  if (!selectPregunta) {
+    alert('Por favor selecciona una encuesta para agregar una opción.');
+    return;
+  }
+
+
+  const opcionSeleccionada = document.getElementById("seleccionOpcionEditar").value;
+  console.log(opcionSeleccionada);
+  const data = {
+   
+    "options": { "id": parseInt(opcionSeleccionada) }
+  };
+
+ fetch(`/api/OptionQuestion/${selectPregunta}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+      alert('Encuesta actualizada exitosamente');
+
+      // Cerrar el modal después de la actualización exitosa
+      const modalElement = document.getElementById('exampleModal8');
+      const modal = bootstrap.Modal.getInstance(modalElement);
+      modal.hide();
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+};
 
 
 // actualizar pregunta
@@ -781,7 +849,7 @@ document.getElementById('editarPregunta').addEventListener('submit', function (e
   for (let [key, value] of formData.entries()) {
     data[key] = value;
   }
-console.log(data);
+  console.log(data);
   fetch(`/api/question/${selectPregunta}`, {
     method: 'PUT',
     headers: {
@@ -874,20 +942,20 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   var collapseElement = document.getElementById('collapseExample4');
   if (collapseElement) {
-   cargarOpcionRespuesta()
+    cargarOpcionRespuesta()
   }
-    });
-    
+});
 
- 
+
+
 
 function cargarOpcionRespuesta() {
   fetch('/api/survey')
-      .then(response => response.json())
-      .then(data => {
-          const gestionPreguntas = document.getElementById('PreguntasRespuesta');
-          gestionPreguntas.innerHTML = "";
-           tablaPregunta = `
+    .then(response => response.json())
+    .then(data => {
+      const gestionPreguntas = document.getElementById('PreguntasRespuesta');
+      gestionPreguntas.innerHTML = "";
+      tablaPregunta = `
               <table class="table">
                   <thead>
                       <tr>
@@ -901,7 +969,7 @@ function cargarOpcionRespuesta() {
                   </thead>
                   <tbody> `;
       data.forEach(survey => {
-        
+
         tablaPregunta += `
                           <tr>
                               <th scope="row">${survey.id}</th>
@@ -937,66 +1005,159 @@ function cargarOpcionRespuesta() {
                     </td>
                           </tr>
                       `;
-                      cargarSurveysSelect(survey.id,"todoCapituloRes");
-                    
-                    });
+        cargarSurveysSelect(survey.id, "todoCapituloRes");
 
-                    gestionPreguntas.innerHTML += tablaPregunta + `
+      });
+
+      gestionPreguntas.innerHTML += tablaPregunta + `
               
                             `
-              
-                  })
-                  .catch((error) => {
-                    console.error('Error:', error);
-                  });
-              }
+
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
 
 
-              function cargarQuestionSelectRes(surveyId, selectElement) {
-                const capituloSeleccionado = selectElement.value;
-                console.log('Seleccionado '+capituloSeleccionado);
-                fetch('/api/question')
-                    .then(response => response.json())
-                    .then(data => {
-              
-                        const preguntaSelect = document.getElementById(`todasPreguntas${surveyId}`);
-                        preguntaSelect.innerHTML = '<option value="">Seleccione una pregunta</option>'; // Limpiar opciones existentes
-                        data.forEach(question => {
-                          if (question.chapter.id==capituloSeleccionado){
-                            console.log('Pregunta encontrada');
-                            preguntaSelect.innerHTML += `
+function cargarQuestionSelectRes(surveyId, selectElement) {
+  const capituloSeleccionado = selectElement.value;
+  console.log('Seleccionado ' + capituloSeleccionado);
+  fetch('/api/question')
+    .then(response => response.json())
+    .then(data => {
+
+      const preguntaSelect = document.getElementById(`todasPreguntas${surveyId}`);
+      preguntaSelect.innerHTML = '<option value="">Seleccione una pregunta</option>'; // Limpiar opciones existentes
+      data.forEach(question => {
+        if (question.chapter.id == capituloSeleccionado) {
+          console.log('Pregunta encontrada');
+          preguntaSelect.innerHTML += `
                                     <option value="${question.id}">${question.question_text}</option>
                                 `;
-                          }
-                           
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });};
+        }
+
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+};
 
 
-                    function cargarRespuestSelectRes(surveyId, selectElement) {
-                      const capituloSeleccionado = selectElement.value;
-                      console.log('Seleccionado '+capituloSeleccionado);
-                      fetch('/api/OptionQuestion')
-                          .then(response => response.json())
-                          .then(data => {
-                    console.log(data);
-                              const preguntaSelect = document.getElementById(`TodasRespuesta${surveyId}`);
-                              preguntaSelect.innerHTML = '<option value="">Seleccione una respuesta</option>'; // Limpiar opciones existentes
-                              data.forEach(OptionRespuesta => {
-                                if (OptionRespuesta.question.id==capituloSeleccionado){
-                                  console.log('Pregunta encontrada'+OptionRespuesta.options.optiontext);
-                                  console.log('Pregunta id :'+OptionRespuesta.options.id);
+function cargarRespuestSelectRes(surveyId, selectElement) {
+  const capituloSeleccionado = selectElement.value;
+  console.log('Seleccionado ' + capituloSeleccionado);
+  fetch('/api/OptionQuestion')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      const preguntaSelect = document.getElementById(`TodasRespuesta${surveyId}`);
+      preguntaSelect.innerHTML = '<option value="">Seleccione una respuesta</option>'; // Limpiar opciones existentes
+      data.forEach(OptionRespuesta => {
+        if (OptionRespuesta.question.id == capituloSeleccionado) {
+          console.log('Pregunta encontrada' + OptionRespuesta.options.optiontext);
+          console.log('Pregunta id :' + OptionRespuesta.options.id);
 
-                                  preguntaSelect.innerHTML += `
-                                          <option value="${OptionRespuesta.options.id}">${OptionRespuesta.options.optiontext}</option>
+          preguntaSelect.innerHTML += `
+                                          <option value="${OptionRespuesta.id}">${OptionRespuesta.options.optiontext}</option>
                                       `;
-                                }
-                                 
-                              });
-                          })
-                          .catch(error => {
-                              console.error('Error:', error);
-                          });};
+        }
+
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+};
+
+
+//Gestion opcion respuesta
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Usa el evento de clic en el contenedor de la tabla
+  const editarCapituloContenedor = document.getElementById('PreguntasRespuesta');
+
+  editarCapituloContenedor.addEventListener('click', function (event) {
+    // Verifica si el clic fue en un ícono de editar
+    if (event.target.classList.contains('bi-pencil-fill')) {
+      // Obtén el ID de la encuesta del atributo data-id del ícono
+      const encuestaId = event.target.getAttribute('data-id');
+      console.log("editar pregunta" + encuestaId);
+      // Encuentra el <select> asociado a esta encuesta
+      const selectElement = document.getElementById(`TodasRespuesta${encuestaId}`);
+
+      // Obtén el capítulo seleccionado del <select>
+      document.getElementById("numeroRespuesta").innerText = selectElement.value;
+      // Actualiza el texto o realiza cualquier acción con el capítulo seleccionado
+      cargarOptionEditar();
+      console.log('ID del capítulo seleccionado para editar:', selectElement.value);
+    }
+    if (event.target.classList.contains('bi-trash3-fill')) {
+      console.log('eliminado');
+      agregarCapitulo = event.target.getAttribute('data-id');
+      console.log(agregarCapitulo);
+      console.log(document.getElementById(`TodasRespuesta${agregarCapitulo}`).value);
+
+      const seleccionarCapitulo = document.getElementById(`TodasRespuesta${agregarCapitulo}`).value;
+      if (!seleccionarCapitulo) {
+        alert('Por favor selecciona una capitulo para eliminar.');
+        return;
+      }
+      console.log('Obtén el ID del atributo' + seleccionarCapitulo);
+
+      fetch(`/api/OptionQuestion/${seleccionarCapitulo}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        }
+      })
+        .then(response => {
+          if (response.ok) {
+            // Si la respuesta no tiene contenido (204 No Content), no intentamos analizar JSON.
+            if (response.status === 204) {
+              return null; // No hay cuerpo para analizar
+            }
+            return response.json(); // Para respuestas con cuerpo JSON
+          } else {
+            return response.text().then(text => {
+              throw new Error(`Error ${response.status}: ${text}`);
+            });
+          }
+        })
+        .then(data => {
+          if (data) {
+            console.log('Encuesta eliminada:', data);
+          } else {
+            console.log('Encuesta eliminada sin datos de respuesta.');
+          }
+          alert('Encuesta eliminada exitosamente');
+          window.location.href = '/gestion';
+        })
+        .catch(err => {
+          console.error('Error:', err);
+          alert(`Ocurrió un error al eliminar la encuesta: ${err.message}`);
+        });
+
+
+
+    }
+    if (event.target.classList.contains('bi-plus-square-fill')) {
+      // Obtén el ID de la encuesta del atributo data-id del ícono
+      const encuestaId = event.target.getAttribute('data-id');
+      console.log("editar pregunta" + encuestaId);
+      // Encuentra el <select> asociado a esta encuesta
+      const selectElement = document.getElementById(`todasPreguntas${encuestaId}`);
+
+      // Obtén el capítulo seleccionado del <select>
+      document.getElementById("seleccionarPregunta").innerText = selectElement.value;
+      // Actualiza el texto o realiza cualquier acción con el capítulo seleccionado
+
+      console.log('ID del capítulo seleccionado para editar:', selectElement.value);
+      cargarOption();
+
+    }
+  });
+});
+
+

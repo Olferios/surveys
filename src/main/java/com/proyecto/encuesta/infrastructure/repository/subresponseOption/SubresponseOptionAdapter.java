@@ -34,7 +34,7 @@ public class SubresponseOptionAdapter implements ISubresponseOptionService {
         return subresponseOptionRepository.findById(id)
                 .map(existingSubresponseOption -> {
                     existingSubresponseOption.setSubresponse_number(subresponseOption.getSubresponse_number());
-                    existingSubresponseOption.setSubresponse_number(subresponseOption.getSubresponse_number());
+                    existingSubresponseOption.setOptions(subresponseOption.getOptions());
                     return subresponseOptionRepository.save(existingSubresponseOption);
                 })
                 .orElse(null);
