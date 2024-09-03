@@ -35,7 +35,13 @@
   </nav>
 
   <main>
+    <div class="services">
+      <div class="service-item" data-bs-toggle="modal" data-bs-target="#exampleModal15">
+        <div class="service-icon">📋</div>
+        <p>Crear encuesta</p>
+      </div>
 
+    </div>
 
 
     <!-- #################
@@ -59,8 +65,9 @@
         aria-expanded="false" aria-controls="collapseExample5" data-bs-hide=".collapse.show">
         Gestión SubPreguntas
       </button>
-      <button onclick="cargarOpcionRespuesta();" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4"
-        aria-expanded="false" aria-controls="collapseExample4" data-bs-hide=".collapse.show">
+      <button onclick="cargarOpcionRespuesta();" class="btn btn-primary" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4"
+        data-bs-hide=".collapse.show">
         Gestión Opción Respuestas
       </button>
     </p>
@@ -230,7 +237,7 @@
     </div>
     <div class="collapse" id="collapseExample4">
       <div class="card card-body" id="PreguntasRespuesta">
-      
+
       </div>
     </div>
     <div class="collapse" id="collapseExample5">
@@ -334,338 +341,352 @@
     </div>
 
 
-    <!-- #####################
+   <!-- #####################
    #########################
               Modal Editar Encuesta
     ########################
     ########################-->
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Encuesta: &nbsp </h1>
-            <h1 class="modal-title fs-5" id="encuestaNumero"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Encuesta: &nbsp </h1>
+        <h1 class="modal-title fs-5" id="encuestaNumero"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editarEncuesta">
+          <div class="mb-3">
+            <label for="name" class="col-form-label">Editar Nombre de la encuesta:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
           </div>
-          <div class="modal-body">
-            <form id="editarEncuesta">
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Editar Nombre de la encuesta:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Editar Descripción de la encuesta:</label>
-                <input type="text" class="form-control" id="description" name="description" required>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Actualizar encuesta</button>
-
-              </div>
-            </form>
+          <div class="mb-3">
+            <label for="description" class="col-form-label">Editar Descripción de la encuesta:</label>
+            <input type="text" class="form-control" id="description" name="description" required>
           </div>
-
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Actualizar encuesta</button>
+          </div>
+        </form>
       </div>
     </div>
-    <!-- #####################
+  </div>
+</div>
+
+<!-- #####################
    #########################
-              Modal Agregar  Capitulo
+              Modal Agregar Capitulo
     ########################
     ########################-->
-
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Capitulo a la encuesta #: &nbsp </h1>
-            <h1 class="modal-title fs-5" id="encuestaNumeroCap"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Capitulo a la encuesta #: &nbsp </h1>
+        <h1 class="modal-title fs-5" id="encuestaNumeroCap"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="agregarCapitulo">
+          <div class="mb-3">
+            <label for="chapter_title" class="col-form-label">Nombre Capitulo:</label>
+            <input type="text" class="form-control" id="chapter_title" name="chapter_title" required>
           </div>
-          <div class="modal-body">
-            <form id="agregarCapitulo">
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Nombre Capitulo:</label>
-                <input type="text" class="form-control" id="chapter_title" name="chapter_title" required>
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Numero Capitulo</label>
-                <input type="text" class="form-control" id="chapter_number" name="chapter_number" required>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Crear Capitulo</button>
-              </div>
-            </form>
+          <div class="mb-3">
+            <label for="chapter_number" class="col-form-label">Numero Capitulo</label>
+            <input type="text" class="form-control" id="chapter_number" name="chapter_number" required>
           </div>
-
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Crear Capitulo</button>
+          </div>
+        </form>
       </div>
     </div>
-    <!-- #####################
+  </div>
+</div>
+
+<!-- #####################
    #########################
               Modal Editar Capitulo
     ########################
     ########################-->
-
-    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Capitulo: &nbsp </h1>
-            <h1 class="modal-title fs-5" id="encuestaNumeroCapEditar"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Capitulo: &nbsp </h1>
+        <h1 class="modal-title fs-5" id="encuestaNumeroCapEditar"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editarCapitulo">
+          <div class="mb-3">
+            <label for="chapter_title" class="col-form-label">Editar Nombre de Capitulo:</label>
+            <input type="text" class="form-control" id="chapter_title" name="chapter_title" required>
           </div>
-          <div class="modal-body">
-            <form id="editarCapitulo">
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Editar Nombre de Capitulo:</label>
-                <input type="text" class="form-control" id="chapter_title" name="chapter_title" required>
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Editar Numero Capitulo:</label>
-                <input type="text" class="form-control" id="chapter_number" name="chapter_number" required>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" id="btnActualizarCapitulo" class="btn btn-primary">Actualizar Capitulo</button>
-              </div>
-            </form>
+          <div class="mb-3">
+            <label for="chapter_number" class="col-form-label">Editar Numero Capitulo:</label>
+            <input type="text" class="form-control" id="chapter_number" name="chapter_number" required>
           </div>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" id="btnActualizarCapitulo" class="btn btn-primary">Actualizar Capitulo</button>
+          </div>
+        </form>
       </div>
     </div>
-    <!-- #####################
+  </div>
+</div>
+
+<!-- #####################
    #########################
-              Modal Editar  Pregunta
+              Modal Editar Pregunta
     ########################
     ########################-->
-
-    <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Pregunta #: &nbsp; </h1>
-            <h1 class="modal-title fs-5" id="numeroPregunta"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Pregunta #: &nbsp; </h1>
+        <h1 class="modal-title fs-5" id="numeroPregunta"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editarPregunta">
+          <div class="mb-3">
+            <label for="question_number" class="col-form-label">Editar Numero Pregunta</label>
+            <input type="text" class="form-control" id="question_number" name="question_number" required>
           </div>
-          <div class="modal-body">
-       
-            <form id="editarPregunta">
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Editar Numero Pregunta</label>
-                <input type="text" class="form-control" id="question_number" name="question_number" required>
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Editar Tipo de respuesta de la pregunta</label>
-                <div>
-                <select name="response_type">
-                  <option value="texto">texto</option>
-                  <option value="opcion_multiple">seleccion multiple</option>
-                </select>            </div>  </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Editar Comentario de la pregunta</label>
-                <input type="text" class="form-control"  id="comment_question" name="comment_question" required>
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Editar la pregunta </label>
-                <input type="text" class="form-control"id="question_text" name="question_text" required>
-              </div>
-      
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" id="btnActualizarCapitulo" class="btn btn-primary">Actualizar Capitulo</button>
-              </div>
+          <div class="mb-3">
+            <label for="response_type" class="col-form-label">Editar Tipo de respuesta de la pregunta</label>
+            <div>
+              <select name="response_type" id="response_type">
+                <option value="texto">texto</option>
+                <option value="opcion_multiple">selección múltiple</option>
+              </select>
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <!-- #####################
-   #########################
-              Modal Agregar  Repuesta (lista)
-    ########################
-    ########################-->
-
-    <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Opción Respuesta </h1>
-            <h1 class="modal-title fs-5" id="seleccionarPregunta"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Seleccione Opción de respuesta</label>
-               
-                </div>
-                <div class="mb-3">
-                  <select name="opciones" id="seleccionOpcion">
-                  
-
-                  </select>
-              </div>
-
-            </form>
+          <div class="mb-3">
+            <label for="comment_question" class="col-form-label">Editar Comentario de la pregunta</label>
+            <input type="text" class="form-control" id="comment_question" name="comment_question" required>
+          </div>
+          <div class="mb-3">
+            <label for="question_text" class="col-form-label">Editar la pregunta </label>
+            <input type="text" class="form-control" id="question_text" name="question_text" required>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button onclick="agregarOption();" type="button" class="btn btn-primary">Agregar Respuesta</button>
+            <button type="submit" id="btnActualizarPregunta" class="btn btn-primary">Actualizar Pregunta</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
-    <!-- #####################
+  </div>
+</div>
+
+<!-- #####################
    #########################
-              Modal Agregar  SUBPregunta
+              Modal Agregar Respuesta (lista)
     ########################
     ########################-->
-
-    <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear SubPregunta </h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Opción Respuesta </h1>
+        <h1 class="modal-title fs-5" id="seleccionarPregunta"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="opciones" class="col-form-label">Seleccione Opción de respuesta</label>
           </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Numero SubPregunta</label>
-                <input type="text" class="form-control" id="recipient-name">
-              </div>
-
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Escriba la Subpregunta aqui </label>
-                <textarea class="form-control" id="message-text"></textarea>
-              </div>
-            </form>
+          <div class="mb-3">
+            <select name="opciones" id="seleccionOpcion"></select>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary">Crear Pregunta</button>
-          </div>
-        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button onclick="agregarOption();" type="button" class="btn btn-primary">Agregar Respuesta</button>
       </div>
     </div>
-    <!-- #####################
+  </div>
+</div>
+
+<!-- #####################
+   #########################
+              Modal Agregar SubPregunta
+    ########################
+    ########################-->
+<div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear SubPregunta </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Numero SubPregunta</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Escriba la Subpregunta aquí </label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Crear SubPregunta</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- #####################
    #########################
               Modal Editar Respuesta
     ########################
     ########################-->
-
-    <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Opción respuesta </h1>
-            <h1 class="modal-title fs-5"  id="numeroRespuesta"></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form>
+<div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Opción respuesta </h1>
+        <h1 class="modal-title fs-5" id="numeroRespuesta"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="opciones" class="col-form-label">Seleccione Opción de respuesta</label>
+            <div class="dropdown">
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Seleccione Opción de respuesta</label>
-                <div class="dropdown">
-                  <div class="mb-3">
-                    <select name="opciones" id="seleccionOpcionEditar">
-                    
-  
-                    </select>
-                </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <button onclick="ActualizarOption();" type="button" class="btn btn-primary">Agregar Respuesta</button>
-                </div>
+                <select name="opciones" id="seleccionOpcionEditar"></select>
               </div>
-
-            </form>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
-    </div> 
-      <!-- #####################
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button onclick="ActualizarOption();" type="button" class="btn btn-primary">Actualizar Respuesta</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- #####################
    #########################
-              Modal Agregar  Pregunta
+              Modal Agregar Pregunta
     ########################
     ########################-->
-
-      <div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Opción Respuesta </h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">Nombre opción respuesta</label>
-                  <input type="text" class="form-control" id="recipient-name">
-                </div>
-
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-primary">Crear Opción respuesta</button>
-            </div>
-          </div>
-        </div>
+<div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Pregunta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre opción respuesta</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Crear Opción respuesta</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-      <!-- #####################
+<!-- #####################
    #########################
-              Modal Agregar  Pregunta
+              Modal Crear Encuesta
     ########################
     ########################-->
+<div class="modal fade" id="exampleModal15" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Encuesta</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="nuevaEncuesta">
+          <div class="mb-3">
+            <label for="name" class="col-form-label">Nombre de la encuesta:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="col-form-label">Descripción de la encuesta:</label>
+            <input type="text" id="description" name="description" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Crear encuesta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-      <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Pregunta En El Capitulo #: &nbsp</h1>
-              <h1 class="modal-title fs-5" id="numeroCapitulo"></h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="agregarPagina">
-                <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">Numero Pregunta</label>
-                  <input type="text" class="form-control" id="question_numberCrear" name="question_number" required>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Tipo de respuesta de la pregunta</label>
-
-                  <div>
-                    <select id="response_typeCrear">
-                      <option value="texto">texto</option>
-                      <option value="opcion_multiple">seleccion multiple</option>
-                    </select>           
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Comentario de la pregunta</label>
-                  <input type="text" class="form-control" id="comment_questionCrear" name="comment_question" required>
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Escriba su pregunta aqui </label>
-                  <input type="text" class="form-control" id="question_textCrear" name="question_text" required>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <button type="submit" id="btnCrearPregunta" class="btn btn-primary">Crear Pregunta</button>
-                </div>
-              </form>
+<!-- #####################
+   #########################
+              Modal Agregar Pregunta En El Capitulo
+    ########################
+    ########################-->
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Pregunta En El Capitulo #: &nbsp</h1>
+        <h1 class="modal-title fs-5" id="numeroCapitulo"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="agregarPagina">
+          <div class="mb-3">
+            <label for="question_numberCrear" class="col-form-label">Numero Pregunta</label>
+            <input type="text" class="form-control" id="question_numberCrear" name="question_number" required>
+          </div>
+          <div class="mb-3">
+            <label for="response_typeCrear" class="col-form-label">Tipo de respuesta de la pregunta</label>
+            <div>
+              <select id="response_typeCrear">
+                <option value="texto">texto</option>
+                <option value="opcion_multiple">selección múltiple</option>
+              </select>
             </div>
           </div>
-        </div>
+          <div class="mb-3">
+            <label for="comment_questionCrear" class="col-form-label">Comentario de la pregunta</label>
+            <input type="text" class="form-control" id="comment_questionCrear" name="comment_question" required>
+          </div>
+          <div class="mb-3">
+            <label for="question_textCrear" class="col-form-label">Escriba su pregunta aquí </label>
+            <input type="text" class="form-control" id="question_textCrear" name="question_text" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" id="btnCrearPregunta" class="btn btn-primary">Crear Pregunta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
   </main>

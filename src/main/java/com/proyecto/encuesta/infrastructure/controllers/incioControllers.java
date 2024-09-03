@@ -21,5 +21,9 @@ public class incioControllers {
     public String test(Model model){
         return "test";
     }
+    @GetMapping("/users")
+    public String users(Model model){
+        return "users";
+    }
 
 }

@@ -103,6 +103,15 @@ public class SurveyController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @PutMapping("/enable/{id}")
+    public ResponseEntity<Survey> updateEnable(@PathVariable Long id, @RequestBody Survey survey) {
+        Survey updatedSurvey = surveyService.updateEnable(id, survey);
+        if (updatedSurvey != null) {
+            return new ResponseEntity<>(updatedSurvey, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

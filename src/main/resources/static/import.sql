@@ -1,6 +1,6 @@
 INSERT INTO survey (description, name,enable) VALUES('Encuesta de Satisfacción del Cliente', 'Encuesta 1', true),
-('Encuesta de Compromiso de Empleados', 'Encuesta 2', true),
-('Encuesta de Investigación de Mercado', 'Encuesta 3', true),
+('Encuesta de Compromiso de Empleados', 'Encuesta 2', false),
+('Encuesta de Investigación de Mercado', 'Encuesta 3', false),
 ('Encuesta de Retroalimentación de Productos', 'Encuesta 4', true),
 ('Encuesta de Usabilidad del Sitio Web', 'Encuesta 5', true),
 ('Encuesta de Puntuación del Promotor Neto', 'Encuesta 6', true),

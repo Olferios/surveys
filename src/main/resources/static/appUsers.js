@@ -64,10 +64,7 @@ console.log(survey);
                        <td>${survey.name}</td>
                         <td>${survey.description}</td>
                      <td>
-                <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarEncuesta" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"></i>
-                <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarEncuesta" title="Eliminar" style="cursor: pointer;"></i>
-                <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar capitulo" data-bs-toggle="modal" data-bs-target="#exampleModal2"style="cursor: pointer;"></i>
-                    <button onclick="deshabilitar()" data-id=${survey.id}>Deshabilitar</button>
+                  
 
               </td>
                        </td>
@@ -83,11 +80,7 @@ console.log(survey);
                        <td>${survey.name}</td>
                         <td>${survey.description}</td>
                      <td>
-                <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarEncuesta" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"></i>
-                <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarEncuesta" title="Eliminar" style="cursor: pointer;"></i>
-                <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar capitulo" data-bs-toggle="modal" data-bs-target="#exampleModal2"style="cursor: pointer;"></i>
-                    <button onclick="habilitar()" data-id=${survey.id}>Habilitar</button>
-
+              
               </td>
                        </td>
                        
@@ -490,10 +483,7 @@ function cargarSurveyscap() {
               </div>
             </td>
                    <td>
-              <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarCapitulo" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="cursor: pointer;"></i>
-              <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarCapitulo" title="Eliminar" style="cursor: pointer;"></i>
-              <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar Pregunta" data-bs-toggle="modal" data-bs-target="#exampleModal4"style="cursor: pointer;"></i>
-
+             
             </td>
                      </td>
                      
@@ -645,12 +635,7 @@ function cargarSurveyscapPregunta() {
                               </td>
                               <td>
               
-                                  <i class="bi bi-pencil-fill" data-id="${survey.id}" id="editarCapitulo"title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal5"
-                  style="cursor: pointer;"></i>
-                                  <i class="bi bi-trash3-fill" data-id="${survey.id}" id="eliminarCapitulo" title="Eliminar" style="cursor: pointer;"></i>
-                                  <i class="bi bi-plus-square-fill" data-id="${survey.id}" id="agregarRespuestaMultiple${survey.id}" title="Agregar Respuesta" data-bs-toggle="modal"
-                  data-bs-target="#exampleModal6" style="cursor: pointer;"></i>
-                    </td>
+                       </td>
                           </tr>
                       `;
         cargarSurveysSelect(survey.id, "encuestaCapituloSec");
@@ -1094,14 +1079,7 @@ function cargarOpcionRespuesta() {
                                       </select>
                                   </div>
                               </td>
-                              <td>
-              
-                                  <i class="bi bi-pencil-fill" data-id="${survey.id}" id="editarCapituloRes${survey.id}"title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal8"
-                  style="cursor: pointer;"></i>
-                                  <i class="bi bi-trash3-fill" data-id="${survey.id}" id="eliminarCapituloRes${survey.id}" title="Eliminar" style="cursor: pointer;"></i>
-                                  <i class="bi bi-plus-square-fill" data-id="${survey.id}" id="respuestasDesAg${survey.id}" title="Agregar Respuesta" data-bs-toggle="modal"
-                  data-bs-target="#exampleModal6" style="cursor: pointer;"></i>
-                    </td>
+                             
                           </tr>
                       `;
         cargarSurveysSelect(survey.id, "todoCapituloRes");

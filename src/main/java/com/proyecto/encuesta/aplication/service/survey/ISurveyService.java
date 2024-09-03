@@ -14,6 +14,6 @@ public interface ISurveyService {
     Survey save(Survey survey);
 
     Survey update(Long id, Survey survey);
-
+    Survey updateEnable(Long id, Survey survey);
     void deleteById(Long id);
 }
