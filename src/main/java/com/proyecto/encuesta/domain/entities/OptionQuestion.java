@@ -8,37 +8,29 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 @Entity
-public class ResponseOption {
+@Table(name = "option_question")
+public class OptionQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
-
-    @Column(columnDefinition = "VARCHAR(10)", nullable = false)
-    private String option_value;
-
-    @ManyToOne
-    @JoinColumn(name = "Categorycatalog_id")
-    private CategoryCatalog categoryCatalog;
-
+    private int subresponse_number;
     @Embedded
     Audit audit = new Audit();
-
-    @ManyToOne
-    @JoinColumn(name = "parentresponse_id")
-    private ResponseOption responseOption ;
+     @ManyToOne
+    @JoinColumn(name = "subquestion_id")
+    private SubQuestion subQuestion ;
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question ;
-    @Column(columnDefinition = "VARCHAR(30)", nullable = false)
-    private String typecomponenthtml;
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String comment_response;
+    @ManyToOne
+    @JoinColumn(name = "option_id")
+    private Options options ;
     
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String option_text;
 }

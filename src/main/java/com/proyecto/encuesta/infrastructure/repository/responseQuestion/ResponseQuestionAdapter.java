@@ -1,7 +1,7 @@
 package com.proyecto.encuesta.infrastructure.repository.responseQuestion;
 
 import com.proyecto.encuesta.aplication.service.responseQuestion.IResponseQuestionService;
-import com.proyecto.encuesta.domain.entities.ResponseQuestion;
+import com.proyecto.encuesta.domain.entities.SubQuestion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,22 +15,22 @@ public class ResponseQuestionAdapter implements IResponseQuestionService {
     private ResponseQuestionRepository responseQuestionRepository;
 
     @Override
-    public Optional<ResponseQuestion> findById(Long id) {
+    public Optional<SubQuestion> findById(Long id) {
         return responseQuestionRepository.findById(id);
     }
 
     @Override
-    public List<ResponseQuestion> getAll() {
+    public List<SubQuestion> getAll() {
         return responseQuestionRepository.findAll();
     }
 
     @Override
-    public ResponseQuestion save(ResponseQuestion responseQuestion) {
+    public SubQuestion save(SubQuestion responseQuestion) {
         return responseQuestionRepository.save(responseQuestion);
     }
 
     @Override
-    public ResponseQuestion update(Long id, ResponseQuestion responseQuestion) {
+    public SubQuestion update(Long id, SubQuestion responseQuestion) {
         return responseQuestionRepository.findById(id)
                 .map(existingResponseQuestion -> {
                     existingResponseQuestion.setResponsetext(responseQuestion.getResponsetext());

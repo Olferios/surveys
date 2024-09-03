@@ -1,6 +1,6 @@
 package com.proyecto.encuesta.infrastructure.controllers;
 
-import com.proyecto.encuesta.domain.entities.SubresponseOption;
+import com.proyecto.encuesta.domain.entities.OptionQuestion;
 import com.proyecto.encuesta.aplication.service.subresponseOption.ISubresponseOptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,34 +11,34 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/subresponseOption")
+@RequestMapping("/api/OptionQuestion")
 public class SubresponseOptionController {
 
     @Autowired
     private ISubresponseOptionService subresponseOptionService;
 
     @GetMapping
-    public ResponseEntity<List<SubresponseOption>> list() {
-        List<SubresponseOption> subresponseOptions = subresponseOptionService.getAll();
+    public ResponseEntity<List<OptionQuestion>> list() {
+        List<OptionQuestion> subresponseOptions = subresponseOptionService.getAll();
         return new ResponseEntity<>(subresponseOptions, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<SubresponseOption> show(@PathVariable Long id) {
+    public ResponseEntity<OptionQuestion> show(@PathVariable Long id) {
         return subresponseOptionService.findById(id)
                 .map(subresponseOption -> new ResponseEntity<>(subresponseOption, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public ResponseEntity<SubresponseOption> create(@RequestBody SubresponseOption subresponseOption) {
-        SubresponseOption createdSubresponseOption = subresponseOptionService.save(subresponseOption);
+    public ResponseEntity<OptionQuestion> create(@RequestBody OptionQuestion subresponseOption) {
+        OptionQuestion createdSubresponseOption = subresponseOptionService.save(subresponseOption);
         return new ResponseEntity<>(createdSubresponseOption, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SubresponseOption> update(@PathVariable Long id, @RequestBody SubresponseOption subresponseOption) {
-        SubresponseOption updatedSubresponseOption = subresponseOptionService.update(id, subresponseOption);
+    public ResponseEntity<OptionQuestion> update(@PathVariable Long id, @RequestBody OptionQuestion subresponseOption) {
+        OptionQuestion updatedSubresponseOption = subresponseOptionService.update(id, subresponseOption);
         if (updatedSubresponseOption != null) {
             return new ResponseEntity<>(updatedSubresponseOption, HttpStatus.OK);
         } else {

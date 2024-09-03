@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toggle: false
     });
     bootstrapCollapse.show();
+
   }
 
 
@@ -38,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(response => response.json())
       .then(data => {
         const allSurveysDiv = document.getElementById('todasEncuestas');
+
+        
 
         tablaEncuesta = `   <table class="table">
           <thead>
@@ -71,7 +74,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         allSurveysDiv.innerHTML += tablaEncuesta + `
 
-                `
+                `;
+                allSurveysDiv.innerHTML += tablaEncuesta + `
+
+                `;
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -484,10 +490,10 @@ document.addEventListener('DOMContentLoaded', function () {
 //agregar pagina a capitulo
 document.getElementById('agregarPagina').addEventListener('submit', function (event) {
   event.preventDefault();
-  const numeroCapitulo = document.getElementById("question_number").value;
-  const tipoRespuesta = document.getElementById("response_type").value;
-  const comentarioPregunta = document.getElementById("comment_question").value;
-  const textoPregunta = document.getElementById("question_text").value;
+  const numeroCapitulo = document.getElementById("question_numberCrear").value;
+  const tipoRespuesta = document.getElementById("response_typeCrear").value;
+  const comentarioPregunta = document.getElementById("comment_questionCrear").value;
+  const textoPregunta = document.getElementById("question_textCrear").value;
   const capituloId = parseInt(document.getElementById("numeroCapitulo").textContent); // Convierte a entero
 
 
@@ -639,8 +645,122 @@ document.addEventListener('DOMContentLoaded', function () {
 
       console.log('ID del capítulo seleccionado para editar:', selectElement.value);
     }
+    if (event.target.classList.contains('bi-trash3-fill')) {
+      // Obtén el ID de la encuesta del atributo data-id del ícono
+      const encuestaId = event.target.getAttribute('data-id');
+      console.log("editar pregunta"+encuestaId) ;
+      // Encuentra el <select> asociado a esta encuesta
+      const selectElement = document.getElementById(`capituloPreguntas${encuestaId}`);
+
+      // Obtén el capítulo seleccionado del <select>
+      document.getElementById("seleccionarPregunta").innerText = selectElement.value;
+      // Actualiza el texto o realiza cualquier acción con el capítulo seleccionado
+
+      console.log('ID del capítulo seleccionado para editar:', selectElement.value);
+      cargarOption();
+
+
+
+
+    }
+    if (event.target.classList.contains('bi-plus-square-fill')) {
+      // Obtén el ID de la encuesta del atributo data-id del ícono
+      const encuestaId = event.target.getAttribute('data-id');
+      console.log("editar pregunta"+encuestaId) ;
+      // Encuentra el <select> asociado a esta encuesta
+      const selectElement = document.getElementById(`capituloPreguntas${encuestaId}`);
+
+      // Obtén el capítulo seleccionado del <select>
+      document.getElementById("seleccionarPregunta").innerText = selectElement.value;
+      // Actualiza el texto o realiza cualquier acción con el capítulo seleccionado
+
+      console.log('ID del capítulo seleccionado para editar:', selectElement.value);
+      cargarOption();
+
+
+
+
+    }
   });
 });
+
+
+//agragar opcion de repuesta
+
+function cargarOption() {
+  fetch('/api/options')
+      .then(response => response.json())
+      .then(data => {
+          const gestionPreguntas = document.getElementById('seleccionOpcion');
+          gestionPreguntas.innerHTML = "";
+    console.log(data);
+      data.forEach(option => {
+        
+        gestionPreguntas.innerHTML  += `
+          <option value="${option.id}">${option.optiontext}</option>
+                         
+                      `;
+                   
+                    });
+
+  
+              
+                  })
+                  .catch((error) => {
+                    console.error('Error:', error);
+                  });
+              }
+
+
+
+//agregar opcion respuesta 
+
+
+          function agregarOption(){
+
+             const selectPregunta = document.getElementById("seleccionarPregunta").textContent;
+             if (!selectPregunta) {
+                 alert('Por favor selecciona una encuesta para agregar una opción.');
+                 return;
+             }
+
+
+              const opcionSeleccionada = document.getElementById("seleccionOpcion").value;
+              console.log(opcionSeleccionada);
+              const data = {
+                  "subresponse_number":1,
+                  "question": {"id":parseInt(selectPregunta)},
+                  "options":{"id":parseInt(opcionSeleccionada)}
+              };
+
+              fetch('/api/OptionQuestion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('Encuesta Registrada Exitosamente');
+                   
+                    // cargarSurveys(); // Recargar las encuestas para incluir la nueva
+                    const modalElement = document.getElementById('exampleModal6');
+                    const modal = bootstrap.Modal.getInstance(modalElement);
+                   
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+              // {
+              //   "subresponse_number":1,
+              //       "question": {"id":1},
+              //   "options":{"id":1}
+              //   }
+          }
+
 
 // actualizar pregunta
 
@@ -690,6 +810,7 @@ console.log(data);
 // pregunta
 document.addEventListener('DOMContentLoaded', function () {
   // Usa el evento de clic en el contenedor de la tabla
+
   const allSurveysDiv = document.getElementById('capitulosecPreguntas');
   allSurveysDiv.addEventListener('click', function (event) {
 
@@ -749,45 +870,133 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// document.getElementById('editarPregunta').addEventListener('submit', function (event) {
-//   event.preventDefault();
 
-//   const selectIdPregunta = document.getElementById("numeroPregunta").textContent;
+document.addEventListener('DOMContentLoaded', function () {
+  var collapseElement = document.getElementById('collapseExample4');
+  if (collapseElement) {
+   cargarOpcionRespuesta()
+  }
+    });
+    
 
-//   if (!selectIdPregunta) {
-//     alert('Por favor selecciona un capítulo para editar.');
-    
-//     return;
-    
-//   }
  
 
-//   for (let [key, value] of formData.entries()) {
-//     data[key] = value;
-//   }
-// console.log(data);
-//   // fetch(`/api/chapter/${selectedCapituloId}`, {
-//   //   method: 'PUT',
-//   //   headers: {
-//   //     'Content-Type': 'application/json'
-//   //   },
-//   //   body: JSON.stringify(data)
-//   // })
-//   //   .then(response => response.json())
-//   //   .then(data => {
-//   //     console.log('Success:', data);
-//   //     alert('Capítulo actualizado exitosamente');
-//   //     cargarSurveyscap();
-//   //     this.reset();
-//   //     // Cerrar el modal después de la actualización exitosa
-//   //     const modalElement = document.getElementById('exampleModal3');
-//   //     const modal = bootstrap.Modal.getInstance(modalElement);
-//   //     modal.hide();
+function cargarOpcionRespuesta() {
+  fetch('/api/survey')
+      .then(response => response.json())
+      .then(data => {
+          const gestionPreguntas = document.getElementById('PreguntasRespuesta');
+          gestionPreguntas.innerHTML = "";
+           tablaPregunta = `
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th scope="col">Id encuesta</th>
+              <th scope="col">Nombre Encuesta</th>
+              <th scope="col">Capitulo</th>
+              <th scope="col">Preguntas</th>
+              <th scope="col">Respuestas</th>              
+              <th scope="col">Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody> `;
+      data.forEach(survey => {
+        
+        tablaPregunta += `
+                          <tr>
+                              <th scope="row">${survey.id}</th>
+                              <td>${survey.name}</td>
+                              <td>
+                                  <div class="btn-group">
+                                      <select onchange="cargarQuestionSelectRes(${survey.id}, this)" name="PreguntasRespuesta" id="todoCapituloRes${survey.id}">
+                                          <option value="">Seleccione un capítulo</option>
+                                      </select>
+                                  </div>
+                              </td>
+                              <td>
+                                  <div class="btn-group">
+                                    <select onchange="cargarRespuestSelectRes(${survey.id}, this)" name="todasLasEncuestas" id="todasPreguntas${survey.id}">
+                                          <option value="">Seleccione una pregunta</option>
+                                      </select>
+                                  </div>
+                              </td>
+                                <td>
+                                  <div class="btn-group">
+                                      <select name="todasLasEncuestas" id="TodasRespuesta${survey.id}">
+                                          <option value="">Seleccione una respuesta</option>
+                                      </select>
+                                  </div>
+                              </td>
+                              <td>
+              
+                                  <i class="bi bi-pencil-fill" data-id="${survey.id}" id="editarCapitulo"title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal8"
+                  style="cursor: pointer;"></i>
+                                  <i class="bi bi-trash3-fill" data-id="${survey.id}" id="eliminarCapitulo" title="Eliminar" style="cursor: pointer;"></i>
+                                  <i class="bi bi-plus-square-fill" data-id="${survey.id}" title="Agregar Respuesta" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal6" style="cursor: pointer;"></i>
+                    </td>
+                          </tr>
+                      `;
+                      cargarSurveysSelect(survey.id,"todoCapituloRes");
+                    
+                    });
 
-//   //     // Recargar la lista de capítulos
+                    gestionPreguntas.innerHTML += tablaPregunta + `
+              
+                            `
+              
+                  })
+                  .catch((error) => {
+                    console.error('Error:', error);
+                  });
+              }
 
-//   //   })
-//   //   .catch(error => {
-//   //     console.error('Error:', error);
-//   //   });
-// });
+
+              function cargarQuestionSelectRes(surveyId, selectElement) {
+                const capituloSeleccionado = selectElement.value;
+                console.log('Seleccionado '+capituloSeleccionado);
+                fetch('/api/question')
+                    .then(response => response.json())
+                    .then(data => {
+              
+                        const preguntaSelect = document.getElementById(`todasPreguntas${surveyId}`);
+                        preguntaSelect.innerHTML = '<option value="">Seleccione una pregunta</option>'; // Limpiar opciones existentes
+                        data.forEach(question => {
+                          if (question.chapter.id==capituloSeleccionado){
+                            console.log('Pregunta encontrada');
+                            preguntaSelect.innerHTML += `
+                                    <option value="${question.id}">${question.question_text}</option>
+                                `;
+                          }
+                           
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });};
+
+
+                    function cargarRespuestSelectRes(surveyId, selectElement) {
+                      const capituloSeleccionado = selectElement.value;
+                      console.log('Seleccionado '+capituloSeleccionado);
+                      fetch('/api/OptionQuestion')
+                          .then(response => response.json())
+                          .then(data => {
+                    console.log(data);
+                              const preguntaSelect = document.getElementById(`TodasRespuesta${surveyId}`);
+                              preguntaSelect.innerHTML = '<option value="">Seleccione una respuesta</option>'; // Limpiar opciones existentes
+                              data.forEach(OptionRespuesta => {
+                                if (OptionRespuesta.question.id==capituloSeleccionado){
+                                  console.log('Pregunta encontrada'+OptionRespuesta.options.optiontext);
+                                  console.log('Pregunta id :'+OptionRespuesta.options.id);
+
+                                  preguntaSelect.innerHTML += `
+                                          <option value="${OptionRespuesta.options.id}">${OptionRespuesta.options.optiontext}</option>
+                                      `;
+                                }
+                                 
+                              });
+                          })
+                          .catch(error => {
+                              console.error('Error:', error);
+                          });};

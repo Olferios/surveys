@@ -69,3 +69,10 @@ INSERT INTO question (chapter_id, question_number, response_type, comment_questi
 (8, '1', 'texto', '¿Qué mejoras sugeriría para nuestro producto?', '¿Qué mejoras sugeriría para nuestro producto?'),
 (9, '1', 'opcion_multiple', '¿Qué factores influyen más en su decisión de compra?', '¿Qué factores influyen más en su decisión de compra?'),
 (10, '1', 'texto', 'Comentarios finales sobre el proceso de encuesta.', 'Comentarios finales sobre el proceso de encuesta.');
+
+INSERT INTO options (optiontext) 
+VALUES
+("no"),
+("si");
+
+

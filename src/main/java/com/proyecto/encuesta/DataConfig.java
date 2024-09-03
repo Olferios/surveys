@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import com.proyecto.encuesta.domain.entities.CategoryCatalog;
 import com.proyecto.encuesta.domain.entities.Chapter;
 import com.proyecto.encuesta.domain.entities.Question;
-import com.proyecto.encuesta.domain.entities.ResponseOption;
+import com.proyecto.encuesta.domain.entities.Options;
 import com.proyecto.encuesta.domain.entities.Survey;
 import com.proyecto.encuesta.infrastructure.repository.categoriesCatalog.CategoryCatalogRepository;
 import com.proyecto.encuesta.infrastructure.repository.chapter.ChapterRepository;

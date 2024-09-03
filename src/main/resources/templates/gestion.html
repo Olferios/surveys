@@ -59,7 +59,7 @@
         aria-expanded="false" aria-controls="collapseExample5" data-bs-hide=".collapse.show">
         Gestión SubPreguntas
       </button>
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4"
+      <button onclick="cargarOpcionRespuesta();" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4"
         aria-expanded="false" aria-controls="collapseExample4" data-bs-hide=".collapse.show">
         Gestión Opción Respuestas
       </button>
@@ -229,90 +229,8 @@
       </div>
     </div>
     <div class="collapse" id="collapseExample4">
-      <div class="card card-body" id="capituloSecPreguntasRespuesta">
-        <!-- <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Id encuesta</th>
-              <th scope="col">Nombre Encuesta</th>
-              <th scope="col">Capitulo</th>
-              <th scope="col">Preguntas</th>
-              <th scope="col">Respuestas</th>              
-              <th scope="col">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td> -->
-        <!-- *************
-                 DROPDOWN DE CAPITULO
-                 *¨************************* -->
-        <!-- <div class="btn-group">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-                    Seleccione Capitulo
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
-                    <li><a class="dropdown-item" href="#">Capitulo 1</a></li>
-                    <li><a class="dropdown-item" href="#">Capitulo 2</a></li>
-                    <li><a class="dropdown-item" href="#">Capitulo 3</a></li>
-                  </ul>
-                </div>
-              </td> -->
-        <!-- *************
-                 DROPDOWN DE Pregunta
-                 *¨************************* -->
-        <!-- <td>
-                <div class="btn-group">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-                    Seleccione Pregunta
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
-                    <li><a class="dropdown-item" href="#">Pregunta 1</a></li>
-                    <li><a class="dropdown-item" href="#">Pregunta 2</a></li>
-                    <li><a class="dropdown-item" href="#">Pregunta 3</a></li>
-                  </ul>
-                </div>
-              </td> -->
-        <!-- *************
-                 DROPDOWN DE seleccion de Respuesta
-                 *¨************************* -->
-        <!--               
-              <td>
-                <div class="btn-group">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuClickableOutside" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-                    Seleccione Respuesta
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
-                    <li><a class="dropdown-item" href="#">Respuesta 1</a></li>
-                    <li><a class="dropdown-item" href="#">Respuesta 2</a></li>
-                    <li><a class="dropdown-item" href="#">Respuesta 3</a></li>
-                  </ul>
-                </div>
-              </td>
-              
-              <td>
-                <i class="bi bi-pencil-fill" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal8" style="cursor: pointer;"></i>
-                <i class="bi bi-trash3-fill" title="Eliminar" style="cursor: pointer;"></i>
-                <i class="bi bi-plus-square-fill" title="Agregar Opción Respuesta" data-bs-toggle="modal" data-bs-target="#exampleModal9" style="cursor: pointer;"></i>
-
-              </td>
-              
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              
-            </tr>
-          </tbody>
-        </table> -->
+      <div class="card card-body" id="PreguntasRespuesta">
+      
       </div>
     </div>
     <div class="collapse" id="collapseExample5">
@@ -576,31 +494,27 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Opción Respuesta </h1>
+            <h1 class="modal-title fs-5" id="seleccionarPregunta"></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form>
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Seleccione Opción de respuesta</label>
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Seleccione opción de respuesta
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
+               
                 </div>
+                <div class="mb-3">
+                  <select name="opciones" id="seleccionOpcion">
+                  
 
+                  </select>
               </div>
 
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary">Crear Pregunta</button>
+            <button onclick="agregarOption();" type="button" class="btn btn-primary">Agregar Respuesta</button>
           </div>
         </div>
       </div>
@@ -690,7 +604,7 @@
             <div class="modal-body">
               <form>
                 <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">Nnombre opción respuesta</label>
+                  <label for="recipient-name" class="col-form-label">Nombre opción respuesta</label>
                   <input type="text" class="form-control" id="recipient-name">
                 </div>
 
@@ -723,23 +637,29 @@
               <form id="agregarPagina">
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Numero Pregunta</label>
-                  <input type="text" class="form-control" id="question_number" name="question_number" required>
+                  <input type="text" class="form-control" id="question_numberCrear" name="question_number" required>
                 </div>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Tipo de respuesta de la pregunta</label>
-                  <input type="text" class="form-control" id="response_type" name="response_type" required>
+
+                  <div>
+                    <select id="response_typeCrear">
+                      <option value="texto">texto</option>
+                      <option value="opcion_multiple">seleccion multiple</option>
+                    </select>           
+                  </div>
                 </div>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Comentario de la pregunta</label>
-                  <input type="text" class="form-control" id="comment_question" name="comment_question" required>
+                  <input type="text" class="form-control" id="comment_questionCrear" name="comment_question" required>
                 </div>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Escriba su pregunta aqui </label>
-                  <input type="text" class="form-control" id="question_text" name="question_text" required>
+                  <input type="text" class="form-control" id="question_textCrear" name="question_text" required>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <button type="submit" id="btnCrearPregunta" class="btn btn-primary">Crear Capitulo</button>
+                  <button type="submit" id="btnCrearPregunta" class="btn btn-primary">Crear Pregunta</button>
                 </div>
               </form>
             </div>

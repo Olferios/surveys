@@ -1,6 +1,6 @@
 package com.proyecto.encuesta.infrastructure.controllers;
 
-import com.proyecto.encuesta.domain.entities.ResponseQuestion;
+import com.proyecto.encuesta.domain.entities.SubQuestion;
 import com.proyecto.encuesta.aplication.service.responseQuestion.IResponseQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,27 +18,27 @@ public class ResponseQuestionController {
     private IResponseQuestionService responseQuestionService;
 
     @GetMapping
-    public ResponseEntity<List<ResponseQuestion>> list() {
-        List<ResponseQuestion> responseQuestions = responseQuestionService.getAll();
+    public ResponseEntity<List<SubQuestion>> list() {
+        List<SubQuestion> responseQuestions = responseQuestionService.getAll();
         return new ResponseEntity<>(responseQuestions, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResponseQuestion> show(@PathVariable Long id) {
+    public ResponseEntity<SubQuestion> show(@PathVariable Long id) {
         return responseQuestionService.findById(id)
                 .map(responseQuestion -> new ResponseEntity<>(responseQuestion, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
-    public ResponseEntity<ResponseQuestion> create(@RequestBody ResponseQuestion responseQuestion) {
-        ResponseQuestion createdResponseQuestion = responseQuestionService.save(responseQuestion);
+    public ResponseEntity<SubQuestion> create(@RequestBody SubQuestion responseQuestion) {
+        SubQuestion createdResponseQuestion = responseQuestionService.save(responseQuestion);
         return new ResponseEntity<>(createdResponseQuestion, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ResponseQuestion> update(@PathVariable Long id, @RequestBody ResponseQuestion responseQuestion) {
-        ResponseQuestion updatedResponseQuestion = responseQuestionService.update(id, responseQuestion);
+    public ResponseEntity<SubQuestion> update(@PathVariable Long id, @RequestBody SubQuestion responseQuestion) {
+        SubQuestion updatedResponseQuestion = responseQuestionService.update(id, responseQuestion);
         if (updatedResponseQuestion != null) {
             return new ResponseEntity<>(updatedResponseQuestion, HttpStatus.OK);
         } else {
