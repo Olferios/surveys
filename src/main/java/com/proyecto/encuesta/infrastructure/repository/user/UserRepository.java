@@ -1,7 +1,11 @@
 package com.proyecto.encuesta.infrastructure.repository.user;
 
-import com.proyecto.encuesta.domain.entities.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import org.springframework.data.repository.CrudRepository;
+
+import com.proyecto.encuesta.domain.entities.UserEntity;
+
+public interface UserRepository extends CrudRepository<UserEntity,Long> {
+    Optional<UserEntity> findUserEntityByUsername(String username);
 }

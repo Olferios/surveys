@@ -17,9 +17,9 @@ public class incioControllers {
         return "gestion";
     }
 
-    @GetMapping("/test")
-    public String test(Model model){
-        return "test";
+   
+    @GetMapping("/login")
+    public String login() {
+        return "login"; // Devuelve la vista login.html
     }
-
 }
