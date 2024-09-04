@@ -1322,7 +1322,7 @@ document.getElementById('nuevaEncuesta').addEventListener('submit', function (ev
 document.getElementById('crearopcion').addEventListener('submit', function (event) {
 
   event.preventDefault();
-  const nombreOpcion = document.getElementById("optiontext").textContent;
+  const nombreOpcion = document.getElementById("optiontextcrear").value;
 
   const data = {"optiontext": nombreOpcion};
 
@@ -1338,6 +1338,10 @@ document.getElementById('crearopcion').addEventListener('submit', function (even
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
+      if (data.status == 500) {
+        alert('La opcion de respuesta ya existe');
+        return;
+      }
       alert('se creo opcion de respuesta exitosamente');
       const modalElement = document.getElementById('exampleModal18');
       const modal = bootstrap.Modal.getInstance(modalElement);
