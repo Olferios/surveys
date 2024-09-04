@@ -1,39 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Monserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f4f8;
     color: #333;
 }
-
 header {
-    background-color: #0077b6;
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
     color: white;
     padding: 20px 0;
-    text-align: center;
     font-size: 24px;
     font-weight: bold;
-}
-
-nav {
-    background-color: #fff;
-    padding: 15px 0;
-    text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #ddd;
 }
 
-nav a {
-    color: #0077b6;
+.header-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+header nav {
+    margin: 0;
+    margin-left: auto;
+}
+
+header nav a {
+    color: white;
     text-decoration: none;
     padding: 10px 15px;
     margin: 0 5px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    background-color: #e0f7fa;
+    color: #333;
+}
+
+/* Reglas para pantalla pequeña (menos de 768px) */
+@media (max-width: 767px) {
+    .header-contenido {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    header h1 {
+        font-size: 18px;
+    }
+    header nav {
+        margin-top: 10px;
+    }
+    header nav a {
+        font-size: 18px;
+    }
+}
+
+/* Reglas para pantalla mediana (entre 768px y 1024px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .header-contenido {
+        flex-direction: row;
+        align-items: center;
+    }
+    header h1 {
+        font-size: 20px;
+    }
+    header nav a {
+        font-size: 20px;
+    }
+}
+
+/* nav {
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    border-top: 2px solid #FF4B2B;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #ddd;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
 }
 
 nav a:hover {
     background-color: #e0f7fa;
-}
+    color: #333;
+} */
 
 main {
     padding: 20px;
@@ -43,14 +113,13 @@ main {
 }
 
 .services {
-    max-width: 1200px; 
+    max-width: 1200px;
     width: 100%;
     padding: 0 20px; /* Añade padding lateral para evitar que el contenido toque los bordes */
     margin-bottom: 30px; /* Añade margen inferior para separación */
 }
 
 .container {
-    
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
@@ -120,7 +189,6 @@ main {
     color: #333;
 }
 
-
 /* Estilos a editar en la tabla  */
 .bi-pencil-fill, .bi-trash3-fill, .bi-plus-square-fill, .bi-receipt {
     color: #007bff; /* Color por defecto */
@@ -133,5 +201,3 @@ main {
     color: #0056b3; /* Color al hacer hover */
     text-decoration: underline; /* Subrayado al hacer hover (opcional) */
 }
-
-
