@@ -29,14 +29,20 @@ public class SecurityConfig {
         return httpSecurity
             .csrf(csrf -> csrf.disable()) // Deshabilitar CSRF para simplificar
             .authorizeHttpRequests(auth -> {
+
+                auth.requestMatchers("/css/**", "/js/**", "/images/**").permitAll();
+                auth.requestMatchers(HttpMethod.GET, "/**").hasAnyRole("ADMIN","USER");
                 // Endpoints públicos
                 auth.requestMatchers(HttpMethod.GET, "/", "/login").permitAll();
                 auth.requestMatchers(HttpMethod.GET,  "/index").hasAnyRole("ADMIN");
+                auth.requestMatchers(HttpMethod.GET,  "/home").hasAnyRole("ADMIN","USER");
+                auth.requestMatchers(HttpMethod.GET,  "/users").hasAnyRole("ADMIN","USER");
+                auth.requestMatchers(HttpMethod.GET,  "/surveys").hasAnyRole("ADMIN","USER");
                 // Endpoints privados
        
                 auth.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyRole("ADMIN", "DEVELOPER");
                 // Cualquier otra solicitud requiere autenticación
-                auth.anyRequest().authenticated();
+                auth.anyRequest().hasAnyRole("ADMIN");
             })
             .formLogin(form -> form
                 .loginPage("/login") // Página personalizada de inicio de sesión

@@ -16,7 +16,10 @@ public class incioControllers {
     public String gestion(Model model){
         return "gestion";
     }
-
+    @GetMapping("/users")
+    public String users(Model model){
+        return "users";
+    }
    
     @GetMapping("/login")
     public String login() {

@@ -64,37 +64,14 @@ console.log(survey);
                        <td>${survey.name}</td>
                         <td>${survey.description}</td>
                      <td>
-                <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarEncuesta" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"></i>
-                <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarEncuesta" title="Eliminar" style="cursor: pointer;"></i>
-                <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar capitulo" data-bs-toggle="modal" data-bs-target="#exampleModal2"style="cursor: pointer;"></i>
-                    <button onclick="deshabilitar()" data-id=${survey.id}>Deshabilitar</button>
+                  
 
               </td>
                        </td>
                        
                      </tr>
                  `;
-          } else {
-            tablaEncuesta += `
-            
-                <tbody>
-                    <tr>
-                       <th scope="row">${survey.id}</th>
-                       <td>${survey.name}</td>
-                        <td>${survey.description}</td>
-                     <td>
-                <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarEncuesta" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"></i>
-                <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarEncuesta" title="Eliminar" style="cursor: pointer;"></i>
-                <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar capitulo" data-bs-toggle="modal" data-bs-target="#exampleModal2"style="cursor: pointer;"></i>
-                    <button onclick="habilitar()" data-id=${survey.id}>Habilitar</button>
-
-              </td>
-                       </td>
-                       
-                     </tr>
-                 `;
-          }
-
+          } 
         });
         allSurveysDiv.innerHTML += tablaEncuesta + `
 
@@ -475,7 +452,8 @@ function cargarSurveyscap() {
        
              `;
       data.forEach(survey => {
-        tablaEncuesta += `
+         if (survey.enable == true) {
+            tablaEncuesta += `
           
               <tbody>
                   <tr>
@@ -484,21 +462,18 @@ function cargarSurveyscap() {
                    <td>
               <div class="btn-group">            
                     <select   name="todasLasEncuestas" id="todasLasEncuestas${survey.id}">
-              <option value="">Seleccione una encuesta</option>
+              <option value="">Seleccione un capitulo</option>
           </select>
              
               </div>
             </td>
                    <td>
-              <i class="bi bi-pencil-fill" data-id=${survey.id} id="editarCapitulo" title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal3" style="cursor: pointer;"></i>
-              <i class="bi bi-trash3-fill" data-id=${survey.id}  id="eliminarCapitulo" title="Eliminar" style="cursor: pointer;"></i>
-              <i class="bi bi-plus-square-fill" data-id=${survey.id} title="Agregar Pregunta" data-bs-toggle="modal" data-bs-target="#exampleModal4"style="cursor: pointer;"></i>
-
+             
             </td>
                      </td>
                      
                    </tr>
-               `;
+               `;}
         cargarSurveysSelect(survey.id, "todasLasEncuestas");
         cargarSurveyscapPregunta();
       });
@@ -520,7 +495,7 @@ function cargarSurveysSelect(id, elemento) {
     .then(response => response.json())
     .then(data => {
       const allSurveysSelect = document.getElementById(`${elemento}${id}`);
-      allSurveysSelect.innerHTML = '<option value="">Seleccione una encuesta</option>'; // Limpiar opciones existentes
+      allSurveysSelect.innerHTML = '<option value="">Seleccione una capitulo</option>'; // Limpiar opciones existentes
       data.forEach(chapter => {
         if (chapter.survey.id === id) {
           allSurveysSelect.innerHTML += `
@@ -624,7 +599,8 @@ function cargarSurveyscapPregunta() {
                   </thead>
                   <tbody> `;
       data.forEach(survey => {
-
+        console.log(survey.enable);
+        if (survey.enable == true) {
         tablaPregunta += `
                           <tr>
                               <th scope="row">${survey.id}</th>
@@ -645,14 +621,9 @@ function cargarSurveyscapPregunta() {
                               </td>
                               <td>
               
-                                  <i class="bi bi-pencil-fill" data-id="${survey.id}" id="editarCapitulo"title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal5"
-                  style="cursor: pointer;"></i>
-                                  <i class="bi bi-trash3-fill" data-id="${survey.id}" id="eliminarCapitulo" title="Eliminar" style="cursor: pointer;"></i>
-                                  <i class="bi bi-plus-square-fill" data-id="${survey.id}" id="agregarRespuestaMultiple${survey.id}" title="Agregar Respuesta" data-bs-toggle="modal"
-                  data-bs-target="#exampleModal6" style="cursor: pointer;"></i>
-                    </td>
+                       </td>
                           </tr>
-                      `;
+                      `};
         cargarSurveysSelect(survey.id, "encuestaCapituloSec");
       });
 
@@ -1068,7 +1039,8 @@ function cargarOpcionRespuesta() {
                   </thead>
                   <tbody> `;
       data.forEach(survey => {
-
+        console.log(survey.enable);
+if (survey.enable==true) {
         tablaPregunta += `
                           <tr>
                               <th scope="row">${survey.id}</th>
@@ -1094,16 +1066,9 @@ function cargarOpcionRespuesta() {
                                       </select>
                                   </div>
                               </td>
-                              <td>
-              
-                                  <i class="bi bi-pencil-fill" data-id="${survey.id}" id="editarCapituloRes${survey.id}"title="Editar" data-bs-toggle="modal" data-bs-target="#exampleModal8"
-                  style="cursor: pointer;"></i>
-                                  <i class="bi bi-trash3-fill" data-id="${survey.id}" id="eliminarCapituloRes${survey.id}" title="Eliminar" style="cursor: pointer;"></i>
-                                  <i class="bi bi-plus-square-fill" data-id="${survey.id}" id="respuestasDesAg${survey.id}" title="Agregar Respuesta" data-bs-toggle="modal"
-                  data-bs-target="#exampleModal6" style="cursor: pointer;"></i>
-                    </td>
+                             
                           </tr>
-                      `;
+                      `};
         cargarSurveysSelect(survey.id, "todoCapituloRes");
 
       });
@@ -1154,10 +1119,10 @@ function cargarRespuestSelectRes(surveyId, selectElement) {
 
 if(data.response_type=="texto"){
   document.getElementById(`TodasRespuesta${surveyId}`).disabled=true;
-  document.getElementById(`respuestasDesAg${surveyId}`).className="";
-   document.getElementById(`editarCapituloRes${surveyId}`).className="";
-   document.getElementById(`eliminarCapituloRes${surveyId}`).className="";
+alert("texto");
 }else{
+  alert("seleccion multiple");
+  document.getElementById(`TodasRespuesta${surveyId}`).disabled=false;
   fetch('/api/OptionQuestion')
   .then(response => response.json())
   .then(data => {
@@ -1174,12 +1139,8 @@ if(data.response_type=="texto"){
                                     `;
                                     
       }
-      document.getElementById(`TodasRespuesta${surveyId}`).disabled=false;
+     
 
-      document.getElementById(`respuestasDesAg${surveyId}`).className="bi-plus-square-fill";
-      
-   document.getElementById(`editarCapituloRes${surveyId}`).className="bi-pencil-fill";
-   document.getElementById(`eliminarCapituloRes${surveyId}`).className="bi-trash3-fill";
     });
   })
   .catch(error => {
@@ -1282,40 +1243,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
-
-
-
-//crear encuesta
-document.getElementById('nuevaEncuesta').addEventListener('submit', function (event) {
-  event.preventDefault(); // Previene que el formulario se envíe de forma convencional
-
-  const formData = new FormData(this);
-  const data = {};
-
-  for (let [key, value] of formData.entries()) {
-      data[key] = value;
-  }
-  fetch('/api/survey', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-  })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Success:', data);
-          alert('Encuesta Registrada Exitosamente');
-          this.reset(); // Resetea el formulario después de la creación exitosa
-          // cargarSurveys(); // Recargar las encuestas para incluir la nueva
-          const modalElement = document.getElementById('exampleModal');
-          const modal = bootstrap.Modal.getInstance(modalElement);
-          window.location.href = '/gestion';
-      })
-      .catch((error) => {
-          console.error('Error:', error);
-      });
-});
-
 
 
