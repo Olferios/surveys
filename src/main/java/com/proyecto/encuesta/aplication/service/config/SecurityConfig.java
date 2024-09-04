@@ -31,13 +31,13 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> {
 
                 auth.requestMatchers("/css/**", "/js/**", "/images/**").permitAll();
-                auth.requestMatchers(HttpMethod.GET, "/**").hasAnyRole("ADMIN","USER");
+                auth.requestMatchers(HttpMethod.GET, "/api/**").hasAnyRole("ADMIN","USER");
                 // Endpoints públicos
                 auth.requestMatchers(HttpMethod.GET, "/", "/login").permitAll();
                 auth.requestMatchers(HttpMethod.GET,  "/index").hasAnyRole("ADMIN");
                 auth.requestMatchers(HttpMethod.GET,  "/home").hasAnyRole("ADMIN","USER");
                 auth.requestMatchers(HttpMethod.GET,  "/users").hasAnyRole("ADMIN","USER");
-                auth.requestMatchers(HttpMethod.GET,  "/surveys").hasAnyRole("ADMIN","USER");
+                auth.requestMatchers(HttpMethod.GET,  "/gestion").hasRole("ADMIN");
                 // Endpoints privados
        
                 auth.requestMatchers(HttpMethod.POST, "/auth/post").hasAnyRole("ADMIN", "DEVELOPER");
