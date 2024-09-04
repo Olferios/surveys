@@ -17,13 +17,10 @@ public class incioControllers {
         return "gestion";
     }
 
-    @GetMapping("/test")
-    public String test(Model model){
-        return "test";
-    }
-    @GetMapping("/users")
-    public String users(Model model){
-        return "users";
+   
+    @GetMapping("/login")
+    public String login() {
+        return "login"; // Devuelve la vista login.html
     }
 
 }
