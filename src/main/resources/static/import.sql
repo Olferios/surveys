@@ -1,6 +1,6 @@
 INSERT INTO survey (description, name,enable) VALUES('Encuesta de Satisfacción del Cliente', 'Encuesta 1', true),
-('Encuesta de Compromiso de Empleados', 'Encuesta 2', true),
-('Encuesta de Investigación de Mercado', 'Encuesta 3', true),
+('Encuesta de Compromiso de Empleados', 'Encuesta 2', false),
+('Encuesta de Investigación de Mercado', 'Encuesta 3', false),
 ('Encuesta de Retroalimentación de Productos', 'Encuesta 4', true),
 ('Encuesta de Usabilidad del Sitio Web', 'Encuesta 5', true),
 ('Encuesta de Puntuación del Promotor Neto', 'Encuesta 6', true),
@@ -69,3 +69,10 @@ INSERT INTO question (chapter_id, question_number, response_type, comment_questi
 (8, '1', 'texto', '¿Qué mejoras sugeriría para nuestro producto?', '¿Qué mejoras sugeriría para nuestro producto?'),
 (9, '1', 'opcion_multiple', '¿Qué factores influyen más en su decisión de compra?', '¿Qué factores influyen más en su decisión de compra?'),
 (10, '1', 'texto', 'Comentarios finales sobre el proceso de encuesta.', 'Comentarios finales sobre el proceso de encuesta.');
+
+INSERT INTO options (optiontext) 
+VALUES
+("no"),
+("si");
+
+

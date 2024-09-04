@@ -1,19 +1,19 @@
 package com.proyecto.encuesta.aplication.service.responseQuestion;
 
-import com.proyecto.encuesta.domain.entities.ResponseQuestion;
+import com.proyecto.encuesta.domain.entities.SubQuestion;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IResponseQuestionService {
 
-    Optional<ResponseQuestion> findById(Long id);
+    Optional<SubQuestion> findById(Long id);
 
-    List<ResponseQuestion> getAll();
+    List<SubQuestion> getAll();
 
-    ResponseQuestion save(ResponseQuestion responseQuestion);
+    SubQuestion save(SubQuestion responseQuestion);
 
-    ResponseQuestion update(Long id, ResponseQuestion responseQuestion);
+    SubQuestion update(Long id, SubQuestion responseQuestion);
 
     void deleteById(Long id);
 }

@@ -1,19 +1,19 @@
 package com.proyecto.encuesta.aplication.service.responseOption;
 
-import com.proyecto.encuesta.domain.entities.ResponseOption;
+import com.proyecto.encuesta.domain.entities.Options;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IResponseOptionService {
 
-    Optional<ResponseOption> findById(Long id);
+    Optional<Options> findById(Long id);
 
-    List<ResponseOption> getAll();
+    List<Options> getAll();
 
-    ResponseOption save(ResponseOption responseOption);
+    Options save(Options responseOption);
 
-    ResponseOption update(Long id, ResponseOption responseOption);
+    Options update(Long id, Options responseOption);
 
     void deleteById(Long id);
 }

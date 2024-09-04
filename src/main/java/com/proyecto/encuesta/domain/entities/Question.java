@@ -1,5 +1,9 @@
 package com.proyecto.encuesta.domain.entities;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -8,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 
@@ -31,7 +36,10 @@ public class Question {
     private String comment_question;
     @Column(columnDefinition = "TEXT", nullable = false)
     private String question_text;
-
+ 
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private Set<OptionQuestion> optionQuestions ;
     
     public Question() {
     }

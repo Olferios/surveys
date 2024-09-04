@@ -1,19 +1,19 @@
 package com.proyecto.encuesta.aplication.service.subresponseOption;
 
-import com.proyecto.encuesta.domain.entities.SubresponseOption;
+import com.proyecto.encuesta.domain.entities.OptionQuestion;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ISubresponseOptionService {
 
-    Optional<SubresponseOption> findById(Long id);
+    Optional<OptionQuestion> findById(Long id);
 
-    List<SubresponseOption> getAll();
+    List<OptionQuestion> getAll();
 
-    SubresponseOption save(SubresponseOption subresponseOption);
+    OptionQuestion save(OptionQuestion subresponseOption);
 
-    SubresponseOption update(Long id, SubresponseOption subresponseOption);
+    OptionQuestion update(Long id, OptionQuestion subresponseOption);
 
     void deleteById(Long id);
 }

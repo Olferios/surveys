@@ -35,6 +35,7 @@ public class SurveyAdapter implements ISurveyService {
                 .map(existingSurvey -> {
                     existingSurvey.setName(survey.getName());
                     existingSurvey.setDescription(survey.getDescription());
+                    
                     return surveyRepository.save(existingSurvey);
                 })
                 .orElse(null);
@@ -43,5 +44,15 @@ public class SurveyAdapter implements ISurveyService {
     @Override
     public void deleteById(Long id) {
         surveyRepository.deleteById(id);
+    }
+
+    @Override
+    public Survey updateEnable(Long id, Survey survey) {
+        return surveyRepository.findById(id)
+                .map(existingSurvey -> {
+                    existingSurvey.setEnable(survey.isEnable());
+                    return surveyRepository.save(existingSurvey);
+                })
+                .orElse(null);
     }
 }

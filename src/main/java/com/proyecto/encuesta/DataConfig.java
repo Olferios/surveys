@@ -1,3 +1,4 @@
+
 // package com.proyecto.encuesta;
 
 
@@ -33,7 +34,7 @@
 //     @Bean
 //     public CommandLineRunner initData() {
 //         return args -> {
-  
+
 //        CategoryCatalog generalCategory = new CategoryCatalog();
 //         generalCategory.setName("General");
 //         categoriesCatalogRepository.save(generalCategory);

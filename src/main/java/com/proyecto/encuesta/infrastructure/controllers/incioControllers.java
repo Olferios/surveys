@@ -22,4 +22,5 @@ public class incioControllers {
     public String login() {
         return "login"; // Devuelve la vista login.html
     }
+
 }
