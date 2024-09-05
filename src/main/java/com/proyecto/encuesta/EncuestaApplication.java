@@ -106,7 +106,7 @@ public class EncuestaApplication {
                     .roles(Set.of(roleDeveloper))
                     .build();
 
-        //     userRepository.saveAll(List.of(userSantiago, userDaniel, userAndrea, userAnyi));
+            userRepository.saveAll(List.of(userSantiago, userDaniel, userAndrea, userAnyi));
         };
 	}
 
